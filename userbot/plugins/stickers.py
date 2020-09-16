@@ -1,4 +1,3 @@
-
 from telethon import events
 from io import BytesIO
 from PIL import Image
