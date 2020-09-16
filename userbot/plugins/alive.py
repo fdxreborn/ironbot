@@ -71,7 +71,7 @@ async def _(alive):
     Alive_caption = (
          "` ---͓̽-͓̽ ͓̽I͓̽R͓̽O͓̽N͓̽-͓̽B͓̽O͓̽T͓̽ ͓̽-͓̽-͓̽--`\n"
          "╭━━━━━━━━━━━━━━━━━━━╮\n"
-        f"┣[•👤 `USER     :` {DEFAULTUSER}\n"
+        f"┣[•👤 `USER     :` [{DEFAULTUSER}](tg://user?id={hmm})\n"
         f"┣▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n"
         f"┣[•🐍 `Python.  : v.{python_version()}`\n"
         f"┣[•⚙️ `Telethon : v.{version.__version__}`\n"
