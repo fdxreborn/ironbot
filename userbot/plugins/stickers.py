@@ -47,7 +47,7 @@ from userbot.utils import progress
 from userbot.utils import admin_cmd
 from userbot import ALIVE_NAME, CUSTOM_STICKER_PACK_NAME, CUSTOM_ANIMATED_PACK_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Who is this"
-CUSTOM_STICKER_NAME =str(CUSTOM_STICKER_PACK_NAME) if CUSTOM_STICKER_PACK_NAME else "My Boss SensibleUB Volume Pack One"
+CUSTOM_STICKER_NAME =str(CUSTOM_STICKER_PACK_NAME) if CUSTOM_STICKER_PACK_NAME else "My Boss Ironbots Volume Pack One"
 CUSTOM_ANIME_PACK = str(CUSTOM_ANIMATED_PACK_NAME) if CUSTOM_ANIMATED_PACK_NAME else "My Boss Animated Pack"
 FILLED_UP_DADDY = "Invalid pack selected."
 from asyncio import sleep
@@ -134,18 +134,18 @@ async def _(event):
         user.username = user.id
     pack = 1
     userid = event.from_id
-    #packname = f"SensibleUB PACK"
+    #packname = f"Ironbots Pack"
     #packshortname = f"FRIDAY_{userid}_ns"  # format: Uni_Borg_userid
     if userid == 709723121:
         packname = f"Ceo's Packk 🎭"
         packshortname = "ceowhitehatcracks_pack_UB"
     else:
         packname = f"{user.username}'s {pack}"
-        packshortname = f"Sensible_Userbot_{userid}_Pack"
+        packshortname = f"Ironbots_{userid}_Pack"
     await event.edit("`Thats A Nice Sticker ! I Am Taking It In My Pack`")
 
     is_a_s = is_it_animated_sticker(reply_message)
-    file_ext_ns_ion = "@Sensible_Userbot.png"
+    file_ext_ns_ion = "@Ironbots.png"
     file = await borg.download_file(reply_message.media)
     uploaded_sticker = None
     if is_a_s:
@@ -156,7 +156,7 @@ async def _(event):
             packshortname = "ceowhitehatcracks_pack_UB"
         else:
             packname = f"{user.username}'s {pack}"
-            packshortname = f"@Sensible_Userbot_{userid}" # format: Uni_Borg_userid
+            packshortname = f"@Ironbots_{userid}" # format: Uni_Borg_userid
     elif not is_message_image(reply_message):
         await event.edit("Invalid message type")
         return
@@ -276,7 +276,7 @@ async def _(event):
                 await silently_send_message(bot_conv, response)
                 await silently_send_message(bot_conv, sticker_emoji)
                 await silently_send_message(bot_conv, "/done")
-    await event.edit(f"**Sensible Userbot Added That Sticker To My Master {DEFAULTUSER} Pack  SucessFully And Can Be Found** [Here](t.me/addstickers/{packshortname})")
+    await event.edit(f"**Ironbots Userbot Added That Sticker To My Master {DEFAULTUSER} Pack  SucessFully And Can Be Found** [Here](t.me/addstickers/{packshortname})")
 
 @borg.on(admin_cmd(pattern="packinfo"))
 async def _(event):
@@ -516,7 +516,7 @@ async def sticklet(event):
     image.save(image_stream, "WebP")
     image_stream.seek(0)
     # finally, reply the sticker
-    await event.client.send_file(event.chat_id, image_stream, caption="Created Using Sensible Userbot Userbot", reply_to=event.message.reply_to_msg_id)
+    await event.client.send_file(event.chat_id, image_stream, caption="Created Using Ironbots", reply_to=event.message.reply_to_msg_id)
     # cleanup
     try:
         os.remove(FONT_FILE)
@@ -565,7 +565,7 @@ async def sticklet(event):
     image.save(image_stream, "WebP")
     image_stream.seek(0)
     # finally, reply the sticker
-    await event.client.send_file(event.chat_id, image_stream, caption="Created Using Sensible Userbot", reply_to=event.message.reply_to_msg_id)
+    await event.client.send_file(event.chat_id, image_stream, caption="Created Using Ironbots", reply_to=event.message.reply_to_msg_id)
     # cleanup
     try:
         os.remove(FONT_FILE)
@@ -603,7 +603,7 @@ async def _(event):
         message_id = event.reply_to_msg_id
         reply_message = await event.get_reply_message()
         # check if media message
-        await event.edit("Connecting to official Sensible Userbot server and analysing that img ...")
+        await event.edit("Connecting to official Ironbots server and analysing that img ...")
         try:
             downloaded_file_name = await borg.download_media(
                 reply_message,
