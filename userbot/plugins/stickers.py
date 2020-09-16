@@ -42,7 +42,6 @@ from telethon.tl.types import (
     InputStickerSetShortName,
     MessageMediaPhoto
 )
-from datetime import datetime
 import requests
 from userbot.utils import progress
 from userbot.utils import admin_cmd
@@ -170,8 +169,8 @@ async def _(event):
     await event.edit("Packing To Your Pack ! Please Wait!")
 
     async with borg.conversation("@Stickers") as bot_conv:
-        now = datetime.now()
-        dt = now + timedelta(minutes=1)
+        now = datetime.datetime.now()
+        dt = now + datetime.timedelta(minutes=1)
         if not await stickerset_exists(bot_conv, packshortname):
             await event.edit("`Creating a new pack!`")
             await silently_send_message(bot_conv, "/cancel")
@@ -598,7 +597,7 @@ async def _(event):
         await event.edit("You need API token from remove.bg to use this plugin.")
         return False
     input_str = event.pattern_match.group(1)
-    start = datetime.now()
+    start = datetime.datetime.now()
     message_id = event.message.id
     if event.reply_to_msg_id:
         message_id = event.reply_to_msg_id
@@ -635,7 +634,7 @@ async def _(event):
                 allow_cache=False,
                 reply_to=message_id
             )
-        end = datetime.now()
+        end = datetime.datetime.now()
         ms = (end - start).seconds
         await event.edit("Removed dat annoying Backgroup in {} seconds, powered by @Ironbots".format(ms))
     else:
