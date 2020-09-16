@@ -13,11 +13,11 @@ from userbot import CMD_HELP
 from userbot.uniborgConfig import Config
 from userbot.utils import admin_cmd, errors_handler
 
-if Config.PRIVATE_GROUP_BOT_API_ID is None:
+if Config.PRIVATE_GROUP_ID is None:
     BOTLOG = False
 else:
     BOTLOG = True
-    BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
+    BOTLOG_CHATID = Config.PRIVATE_GROUP_ID
 
 
 @borg.on(admin_cmd(outgoing=True, pattern="purge$"))
