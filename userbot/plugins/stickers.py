@@ -170,7 +170,7 @@ async def _(event):
     await event.edit("Packing To Your Pack ! Please Wait!")
 
     async with borg.conversation("@Stickers") as bot_conv:
-        now = datetime.datetime.now()
+        now = datetime.now()
         dt = now + datetime.timedelta(minutes=1)
         if not await stickerset_exists(bot_conv, packshortname):
             await event.edit("`Creating a new pack!`")
