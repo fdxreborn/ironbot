@@ -65,6 +65,7 @@ async def _(alive):
     await alive.delete()
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
+    hmm = bot.uid
     IMG = Config.ALIVE_IMG
     if IMG is None:
         IMG = "https://drive.google.com/uc?id=1BWR-nhFNe8oupi-4SoySVEJWn_G6QsaL&export=download"
