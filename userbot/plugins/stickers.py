@@ -515,4 +515,3 @@ def ReTrieveURL(input_url):
         stream=True
     )
     return r
-
