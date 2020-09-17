@@ -261,7 +261,7 @@ async def _(event):
         now = datetime.datetime.now()
         dt = now + datetime.timedelta(minutes=1)
         if not await stickerset_exists(bot_conv, packshortname):
-            await event.edit("`buat pack baru!`")
+            await event.edit("`Proses buat pack baru!`")
             await silently_send_message(bot_conv, "/cancel")
             if is_a_s:
                 response = await silently_send_message(bot_conv, "/newanimated")
