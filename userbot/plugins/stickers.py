@@ -365,7 +365,7 @@ async def _(event):
                 await silently_send_message(bot_conv, response)
                 await silently_send_message(bot_conv, sticker_emoji)
                 await silently_send_message(bot_conv, "/done")
-    await event.edit(f"**Ironbots Sticker add by {DEFAULTUSER} Pack\nBerhasil! Bisa di check disini** [Here](t.me/addstickers/{packshortname})")
+    await event.edit(f"Ironbots Sticker add by {DEFAULTUSER} Pack\nBerhasil! Bisa di check [Disini!](t.me/addstickers/{packshortname})")
  
 @borg.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
 async def sticklet(event):
