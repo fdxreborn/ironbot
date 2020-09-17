@@ -190,7 +190,7 @@ async def _(event):
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return
-    await event.edit("```Making a Quote```")
+    await event.edit("```Sabar lagi bikin Quote```")
     async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=1031952739))
@@ -225,13 +225,13 @@ async def _(event):
     userid = event.from_id
     #packname = f"Ironbots Pack"
     #packshortname = f"FRIDAY_{userid}_ns"  # format: Uni_Borg_userid
-    if userid == 709723121:
+    if userid == 1178524273:
         packname = f"Ceo's Packk 🎭"
-        packshortname = "ceowhitehatcracks_pack_UB"
+        packshortname = "Ironbots_pack_UB"
     else:
         packname = f"{user.username}'s {pack}"
         packshortname = f"Ironbots_{userid}_Pack"
-    await event.edit("`Thats A Nice Sticker ! I Am Taking It In My Pack`")
+    await event.edit("`Sticker yang bagus...`")
 
     is_a_s = is_it_animated_sticker(reply_message)
     file_ext_ns_ion = "@Ironbots.png"
@@ -240,9 +240,9 @@ async def _(event):
     if is_a_s:
         file_ext_ns_ion = "AnimatedSticker.tgs"
         uploaded_sticker = await borg.upload_file(file, file_name=file_ext_ns_ion)
-        if userid == 709723121:
+        if userid == 1178524273:
             packname = f"Ceo's Packk 🎭"
-            packshortname = "ceowhitehatcracks_pack_UB"
+            packshortname = "Ironbots_pack_UB"
         else:
             packname = f"{user.username}'s {pack}"
             packshortname = f"@Ironbots_{userid}" # format: Uni_Borg_userid
@@ -255,13 +255,13 @@ async def _(event):
             sticker.seek(0)
             uploaded_sticker = await borg.upload_file(sticker, file_name=file_ext_ns_ion)
 
-    await event.edit("Packing To Your Pack ! Please Wait!")
+    await event.edit("Proses colong sticker!\nSabar cuy..!")
 
     async with borg.conversation("@Stickers") as bot_conv:
         now = datetime.datetime.now()
         dt = now + datetime.timedelta(minutes=1)
         if not await stickerset_exists(bot_conv, packshortname):
-            await event.edit("`Creating a new pack!`")
+            await event.edit("`buat pack baru!`")
             await silently_send_message(bot_conv, "/cancel")
             if is_a_s:
                 response = await silently_send_message(bot_conv, "/newanimated")
@@ -365,7 +365,7 @@ async def _(event):
                 await silently_send_message(bot_conv, response)
                 await silently_send_message(bot_conv, sticker_emoji)
                 await silently_send_message(bot_conv, "/done")
-    await event.edit(f"**Ironbots Userbot Added That Sticker To My Master {DEFAULTUSER} Pack  SucessFully And Can Be Found** [Here](t.me/addstickers/{packshortname})")
+    await event.edit(f"**Ironbots Sticker add by {DEFAULTUSER} Pack\nBerhasil! Bisa di check disini** [Here](t.me/addstickers/{packshortname})")
  
 @borg.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
 async def sticklet(event):
