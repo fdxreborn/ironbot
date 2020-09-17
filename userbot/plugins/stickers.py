@@ -205,7 +205,7 @@ async def _(event):
              await event.delete()   
              await bot.forward_messages(event.chat_id, response.message)
 
-@borg.on(admin_cmd(pattern="kang ?(.*)"))
+@borg.on(admin_cmd(pattern="kang ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
