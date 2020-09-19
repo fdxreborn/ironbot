@@ -205,7 +205,7 @@ async def _(event):
              await event.delete()   
              await bot.forward_messages(event.chat_id, response.message)
 
-@borg.on(admin_cmd(pattern="kang ?(.*)", allow_sudo=True))
+@register(outgoing=True, pattern=r"^\.(?:kang|colong|col)\s?(.)?")
 async def _(event):
     if event.fwd_from:
         return
@@ -365,7 +365,7 @@ async def _(event):
                 await silently_send_message(bot_conv, response)
                 await silently_send_message(bot_conv, sticker_emoji)
                 await silently_send_message(bot_conv, "/done")
-    await event.edit(f"Ironbots Sticker add by {DEFAULTUSER} Pack\nBerhasil! Bisa di check [Disini!](t.me/addstickers/{packshortname})")
+    await event.edit(f"Berhasil! Check [Disini!](t.me/addstickers/{packshortname})")
  
 @borg.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
 async def sticklet(event):
