@@ -255,7 +255,7 @@ async def _(event):
             sticker.seek(0)
             uploaded_sticker = await borg.upload_file(sticker, file_name=file_ext_ns_ion)
 
-    await event.edit("`Proses colong sticker!\nSabar cuy..!`")
+    await event.edit("`Lagi nyolong sticker..!`")
 
     async with borg.conversation("@Stickers") as bot_conv:
         now = datetime.datetime.now()
@@ -365,7 +365,7 @@ async def _(event):
                 await silently_send_message(bot_conv, response)
                 await silently_send_message(bot_conv, sticker_emoji)
                 await silently_send_message(bot_conv, "/done")
-    await event.edit(f"Berhasil! Check [Disini!](t.me/addstickers/{packshortname})")
+    await event.edit(f"`Berhasil! Check` [Disini!](t.me/addstickers/{packshortname})")
  
 @borg.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
 async def sticklet(event):
