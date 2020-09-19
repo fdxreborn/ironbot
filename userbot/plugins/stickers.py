@@ -174,7 +174,7 @@ def zipdir(path, ziph):
             ziph.write(os.path.join(root, file))
             os.remove(os.path.join(root, file))
 
-@borg.on(admin_cmd(pattern=r"qbot(?: |$)(.*)"))
+@register(outgoing=True, pattern=r"^\.(?:qbot|q)\s?(.)?")
 async def _(event):
     if event.fwd_from:
         return 
@@ -255,7 +255,7 @@ async def _(event):
             sticker.seek(0)
             uploaded_sticker = await borg.upload_file(sticker, file_name=file_ext_ns_ion)
 
-    await event.edit("Proses colong sticker!\nSabar cuy..!")
+    await event.edit("`Proses colong sticker!\nSabar cuy..!`")
 
     async with borg.conversation("@Stickers") as bot_conv:
         now = datetime.datetime.now()
