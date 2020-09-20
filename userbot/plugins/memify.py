@@ -4,7 +4,7 @@ from glitch_this import ImageGlitcher
 from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
 from telethon import events, functions, types
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl.types import DocumentAttributeFilename
+from telethon.tl.types import DocumentAttributeFilename, MessageMediaPhoto
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.events import register
 THUMB_IMAGE_PATH = './thumb_image.jpg'
