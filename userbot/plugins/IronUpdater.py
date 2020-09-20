@@ -45,6 +45,8 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 '`[HEROKU]: Please set up the` **HEROKU_APP_NAME** `variable'
                 ' to be able to deploy newest changes of userbot.`'
             )
+            await asyncio.sleep(3)
+            await event.delete()
             repo.__del__()
             return
         for app in heroku_applications:
@@ -55,10 +57,14 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             await event.edit(
                 f'{txt}\n`Invalid Heroku credentials for deploying userbot dyno.`'
             )
+            await asyncio.sleep(3)
+            await event.delete()
             return repo.__del__()
         await event.edit('`[HEROKU]:'
                          '\nUserbot dyno build in progress, please wait it can take 7-8 mins`'
                          )
+        await asyncio.sleep(5)
+        await event.delete()
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
         heroku_git_url = heroku_app.git_url.replace(
@@ -85,7 +91,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         await event.edit('`[HEROKU]:'
                          '\nPlease set up` **HEROKU_API_KEY** `variable.`'
                          )
-        await asyncio.sleep(10)
+        await asyncio.sleep(3)
         await event.delete()
     return
 
@@ -140,6 +146,8 @@ async def upstream(event):
                 f"`Unfortunately, the directory {error} does not seem to be a git repository."
                 "\nBut we can fix that by force updating the userbot using .update now.`"
             )
+        await asyncio.sleep(5)
+        await event.delete()
         repo = Repo.init()
         origin = repo.create_remote('upstream', off_repo)
         origin.fetch()
@@ -156,6 +164,8 @@ async def upstream(event):
             'in that case, Updater is unable to identify '
             'which branch is to be merged. '
             'please checkout to any official branch`')
+        await asyncio.sleep(3)
+        await event.delete()
         return repo.__del__()
     try:
         repo.create_remote('upstream', off_repo)
