@@ -6,7 +6,7 @@ from userbot import CMD_HELP, LOGS
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 @borg.on(admin_cmd(outgoing=True, pattern="(mmf|mms) ?(.*)"))
-@borg.on(sudo_cmd(pattern="(mmf|mms) ?(.*)", allow_sudo=True))
+#@borg.on(sudo_cmd(pattern="(mmf|mms) ?(.*)", allow_sudo=True))
 async def memes(cat):
     cmd = cat.pattern_match.group(1)
     catinput = cat.pattern_match.group(2)
