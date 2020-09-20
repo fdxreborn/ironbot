@@ -52,7 +52,13 @@ async def _(event):
              await event.edit("```can you kindly disable your forward privacy settings for good?```")
           else: 
              await event.edit(f"{response.message.message}")
-
+    
+async def silently_send_message(conv, text):
+    await conv.send_message(text)
+    response = await conv.get_response()
+    await conv.mark_read(message=response)
+    return response
+    
     
 @borg.on(admin_cmd("ud (.*)"))
 async def _(event):
