@@ -681,7 +681,7 @@ async def typewriter(typew):
 	sleep(5)
 	await typew.edit("`Tapi Boong, Hiyak Hiyak Hiyak!`")
 	sleep(5)
-	await typew.edit("`Tertipu Kamu Bangsat!`")
+	await typew.edit("`Tertipu Kamu Bang_sat!`")
 	# I did it for two hours :D just ctrl+c - crtl+v
 
 @borg.on(admin_cmd(pattern=r"kmrain"))
