@@ -80,15 +80,15 @@ async def _(event):
         await event.edit(animation_chars[i % 24])
 
 
-@borg.on(admin_cmd(pattern='\\.(.*)', outgoing=True))
+@borg.on(admin_cmd(pattern=r"hand"))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 1
     animation_ttl = range(0, 14)
-    input_str = event.pattern_match.group(1)
-    if input_str == 'hand':
-        await event.edit(input_str)
+  #  input_str = event.pattern_match.group(1)
+  #  if input_str == 'hand':
+    #    await event.edit(input_str)
         animation_chars = [
          '👈',
          '👉',
@@ -107,15 +107,15 @@ async def _(event):
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[(i % 14)])
 
-@borg.on(admin_cmd(pattern='\\.(.*)', outgoing=True))
+@borg.on(admin_cmd(pattern=r"anim"))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 1
     animation_ttl = range(0, 11)
-    input_str = event.pattern_match.group(1)
-    if input_str == 'anim':
-        await event.edit(input_str)
+  #  input_str = event.pattern_match.group(1)
+  #  if input_str == 'anim':
+   #     await event.edit(input_str)
         animation_chars = [
          '😁',
          '😧',
@@ -130,15 +130,15 @@ async def _(event):
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[(i % 11)])
 
-@borg.on(admin_cmd(pattern='\\.(.*)', outgoing=True))
+@borg.on(admin_cmd(pattern=r"fnl"))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 2
     animation_ttl = range(0, 6)
-    input_str = event.pattern_match.group(1)
-    if input_str == 'fnl':
-        await event.edit(input_str)
+ #   input_str = event.pattern_match.group(1)
+ #   if input_str == 'fnl':
+ #       await event.edit(input_str)
         animation_chars = [
          '😁🏿',
          '😁🏾',
