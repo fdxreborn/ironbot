@@ -208,7 +208,7 @@ async def upstream(event):
 @register(outgoing=True, pattern="^.repo$")
 async def source(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("Ironnbot repo klik [disini](https://github.com/tesbot07/ironbot)")
+        await e.edit("Ironbot repo klik [disini](https://github.com/tesbot07/ironbot)")
 
 CMD_HELP.update({
     'update':
