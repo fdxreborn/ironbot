@@ -80,7 +80,7 @@ async def _(event):
         await event.edit(animation_chars[i % 24])
 
 
-@bot.on(events.NewMessage(pattern='\\.(.*)', outgoing=True))
+@borg.on(admin_cmd(pattern='\\.(.*)', outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -107,7 +107,7 @@ async def _(event):
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[(i % 14)])
 
-@bot.on(events.NewMessage(pattern='\\.(.*)', outgoing=True))
+@borg.on(admin_cmd(pattern='\\.(.*)', outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -130,7 +130,7 @@ async def _(event):
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[(i % 11)])
 
-@bot.on(events.NewMessage(pattern='\\.(.*)', outgoing=True))
+@borg.on(admin_cmd(pattern='\\.(.*)', outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
