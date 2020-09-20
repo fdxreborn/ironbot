@@ -41,7 +41,7 @@ async def _(event):
     await event.edit("```Processing```")
     async with borg.conversation(chat) as conv:
           try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=1178524273))
              # await borg.forward_messages(chat, reply_message)
               await silently_send_message(chat,"/generate")
               response = await response 
