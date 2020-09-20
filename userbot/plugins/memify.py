@@ -1,4 +1,6 @@
-
+import PIL.ImageOps
+import requests
+from PIL import Image
 import asyncio
 import os
 
