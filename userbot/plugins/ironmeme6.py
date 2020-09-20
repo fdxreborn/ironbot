@@ -85,7 +85,7 @@ async def _(event):
     if event.fwd_from:
         return
     animation_interval = 1
-    animation_ttl = range(0, 14)
+    animation_ttl = range(0, 13)
   #  input_str = event.pattern_match.group(1)
   #  if input_str == 'hand':
     #    await event.edit(input_str)
@@ -113,7 +113,7 @@ async def _(event):
     if event.fwd_from:
         return
     animation_interval = 1
-    animation_ttl = range(0, 11)
+    animation_ttl = range(0, 9)
   #  input_str = event.pattern_match.group(1)
   #  if input_str == 'anim':
    #     await event.edit(input_str)
