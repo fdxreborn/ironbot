@@ -224,4 +224,55 @@ CMD_HELP.update(
     }
 )
 
+@borg.on(admin_cmd(pattern=r"anim"))
+async def _(event):
+    if event.fwd_from:
+        return
+    animation_interval = 1
+    animation_ttl = range(0, 9)
+  #  input_str = event.pattern_match.group(1)
+  #  if input_str == 'anim':
+   #     await event.edit(input_str)
+    animation_chars = [
+         '😁',
+         '😧',
+         '😡',
+         '😢',
+         '😁',
+         '😧',
+         '😡',
+         '😢',
+         '__**...Eaaa....**__'
+     ]
+    for i in animation_ttl:
+        await asyncio.sleep(animation_interval)
+        await event.edit(animation_chars[(i % 9)])
+
+@borg.on(admin_cmd(pattern=r"anjay"))
+async def _(event):
+    if event.fwd_from:
+        return
+    animation_interval = 1
+    animation_ttl = range(0, 14)
+ #   input_str = event.pattern_match.group(1)
+ #   if input_str == 'fnl':
+ #       await event.edit(input_str)
+    animation_chars = [
+         'A',
+         'En',
+         'Je',
+         'A',
+         'Ye',
+         'A',
+         'A En',
+         'A En Je',
+         'A En Je A',
+         'A En Je A Ye',
+         'Aaaa'
+         'Aaaa aaaa',
+         'Aaaa aaaanjaayy',
+         '**A N J A Y**']
+    for i in animation_ttl:
+        await asyncio.sleep(animation_interval)
+        await event.edit(animation_chars[(i % 14)])
 
