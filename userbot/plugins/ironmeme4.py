@@ -225,7 +225,7 @@ async def _(event):
     if event.fwd_from:
         return
     animation_interval = 2
-    animation_ttl = range(0, 103)
+    animation_ttl = range(0, 14)
     await event.edit("Lihatlah kisah cinta ini..")
     animation_chars = [
             "Satu Cerita Cinta ♥️",
@@ -246,7 +246,7 @@ async def _(event):
 
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 7])
+        await event.edit(animation_chars[i % 14])
 
 @borg.on(admin_cmd(pattern="lucky"))
 async def _(event):
