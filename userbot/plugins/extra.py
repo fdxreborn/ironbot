@@ -36,7 +36,7 @@ async def lastname(steal):
     if message.sender.bot:
         await steal.edit("`Reply to actual users message.`")
         return
-    await steal.edit("`Sit tight while I steal some data from NASA`")
+    await steal.edit("`Hmmm.....`")
     try:
         async with bot.conversation(chat) as conv:
             try:
@@ -54,7 +54,7 @@ async def lastname(steal):
                 return
             else:
                 respond = await conv.get_response()
-                await steal.edit(f"{response.message}")
+                await steal.edit(f"`{response.message}`")
             await steal.client.delete_messages(
                 conv.chat_id, [msg.id, r.id, response.id, respond.id]
             )
