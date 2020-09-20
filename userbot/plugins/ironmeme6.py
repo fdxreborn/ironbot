@@ -89,7 +89,7 @@ async def _(event):
   #  input_str = event.pattern_match.group(1)
   #  if input_str == 'hand':
     #    await event.edit(input_str)
-        animation_chars = [
+    animation_chars = [
          '👈',
          '👉',
          '☝️',
@@ -102,10 +102,11 @@ async def _(event):
          '🤘',
          '🤙',
          '🖐️',
-         '👌']
-        for i in animation_ttl:
-            await asyncio.sleep(animation_interval)
-            await event.edit(animation_chars[(i % 14)])
+         '👌'
+     ]
+    for i in animation_ttl:
+        await asyncio.sleep(animation_interval)
+        await event.edit(animation_chars[(i % 14)])
 
 @borg.on(admin_cmd(pattern=r"anim"))
 async def _(event):
@@ -116,7 +117,7 @@ async def _(event):
   #  input_str = event.pattern_match.group(1)
   #  if input_str == 'anim':
    #     await event.edit(input_str)
-        animation_chars = [
+    animation_chars = [
          '😁',
          '😧',
          '😡',
@@ -125,10 +126,11 @@ async def _(event):
          '😧',
          '😡',
          '😢',
-         '__**...BOY oh BOY! i feel like a wamen....**__']
-        for i in animation_ttl:
-            await asyncio.sleep(animation_interval)
-            await event.edit(animation_chars[(i % 11)])
+         '__**...BOY oh BOY! i feel like a wamen....**__'
+     ]
+    for i in animation_ttl:
+        await asyncio.sleep(animation_interval)
+        await event.edit(animation_chars[(i % 11)])
 
 @borg.on(admin_cmd(pattern=r"fnl"))
 async def _(event):
@@ -139,14 +141,14 @@ async def _(event):
  #   input_str = event.pattern_match.group(1)
  #   if input_str == 'fnl':
  #       await event.edit(input_str)
-        animation_chars = [
+    animation_chars = [
          '😁🏿',
          '😁🏾',
          '😁🏽',
          '😁🏼',
          '\u200e😁',
          '**Fair & Lovely GeNg Is BeHiNd You....**']
-        for i in animation_ttl:
-            await asyncio.sleep(animation_interval)
-            await event.edit(animation_chars[(i % 6)])
+    for i in animation_ttl:
+        await asyncio.sleep(animation_interval)
+        await event.edit(animation_chars[(i % 6)])
 
