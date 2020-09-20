@@ -1,6 +1,3 @@
-"""
-This module updates the userbot based on upstream revision
-"""
 
 from os import remove, execle, path, environ
 import asyncio
