@@ -21,7 +21,12 @@ import emoji
 from googletrans import Translator
 from userbot.utils import admin_cmd
 
- 
+async def silently_send_message(conv, text):
+    await conv.send_message(text)
+    response = await conv.get_response()
+    await conv.mark_read(message=response)
+    return response
+
 @borg.on(admin_cmd("sg ?(.*)"))
 async def _(event):
     if event.fwd_from:
@@ -53,11 +58,6 @@ async def _(event):
           else: 
              await event.edit(f"{response.message.message}")
     
-async def silently_send_message(conv, text):
-    await conv.send_message(text)
-    response = await conv.get_response()
-    await conv.mark_read(message=response)
-    return response
     
     
 @borg.on(admin_cmd("ud (.*)"))
