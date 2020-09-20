@@ -98,6 +98,9 @@ if bool(ENV):
     # OCR API key
     OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
 
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get(
+    "TMP_DOWNLOAD_DIRECTORY", "./downloads")
+
     # remove.bg API key
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
 
