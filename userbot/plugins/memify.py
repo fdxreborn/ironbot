@@ -18,7 +18,7 @@ async def mim(event):
             await event.edit("`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' ")
             return
         reply_message = await event.get_reply_message()
-        await (reply_message.media or event.edit('```reply to a image/sticker/gif```'))
+        await event.edit('```reply to a image/sticker/gif```')
         return
     reply_message.sender
     await bot.download_file(reply_message.media)
