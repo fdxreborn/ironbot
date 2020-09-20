@@ -21,43 +21,39 @@ import emoji
 from googletrans import Translator
 from userbot.utils import admin_cmd
 
-async def silently_send_message(conv, text):
-    await conv.send_message(text)
-    response = await conv.get_response()
-    await conv.mark_read(message=response)
-    return response
-
-@borg.on(admin_cmd("sg ?(.*)"))
+@borg.on(admin_cmd(pattern=("sg ?(.*)")))
 async def _(event):
     if event.fwd_from:
-        return 
+        return
     if not event.reply_to_msg_id:
-       await event.edit("```Reply to any user message.```")
-       return
-    reply_message = await event.get_reply_message() 
+        await event.edit("```Reply to any user message.```")
+        return
+    reply_message = await event.get_reply_message()
     if not reply_message.text:
-       await event.edit("```reply to text message```")
-       return
+        await event.edit("```reply to text message```")
+        return
     chat = "@SangMataInfo_bot"
-    sender = reply_message.sender
+    reply_message.sender
     if reply_message.sender.bot:
-       await event.edit("```Reply to actual users message.```")
-       return
+        await event.edit("```Reply to actual users message.```")
+        return
     await event.edit("```Processing```")
     async with borg.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
-             # await borg.forward_messages(chat, reply_message)
-              await silently_send_message(chat,"/search_id")
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("```Please unblock @sangmatainfo_bot and try again```")
-              return
-          if response.text.startswith("Forward"):
-             await event.edit("```can you kindly disable your forward privacy settings for good?```")
-          else: 
-             await event.edit(f"{response.message.message}")
-    
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=461843263)
+            )
+            await borg.forward_messages(chat, reply_message)
+            response = await response
+        except YouBlockedUserError:
+            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            return
+        if response.text.startswith("Forward"):
+            await event.edit(
+                "The user have enabled privacy settings you cant get name history"
+            )
+        else:
+            await event.edit(f"{response.message.message}")
     
     
 @borg.on(admin_cmd("ud (.*)"))
