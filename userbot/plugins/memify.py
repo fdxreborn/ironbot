@@ -1,6 +1,9 @@
 import PIL.ImageOps
 import requests
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
+from wand.color import Color
+from wand.drawing import Drawing
+from wand.image import Image as catimage
 import asyncio
 import os
 
