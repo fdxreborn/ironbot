@@ -7,7 +7,7 @@ import os
 
 from .. import CMD_HELP, LOGS
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import (
+from userbot.helpers import (
     add_frame,
     cat_meeme,
     cat_meme,
