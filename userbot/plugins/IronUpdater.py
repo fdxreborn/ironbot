@@ -205,6 +205,10 @@ async def upstream(event):
         await event.delete()
     return
 
+@register(outgoing=True, pattern="^.repo$")
+async def source(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        await e.edit("Ironnbot repo klik [disini](https://github.com/tesbot07/ironbot)")
 
 CMD_HELP.update({
     'update':
