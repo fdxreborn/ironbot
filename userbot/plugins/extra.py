@@ -20,7 +20,38 @@ weebyfont = ['卂', '乃', '匚', '刀', '乇', '下', '厶', '卄', '工', '丁
 import emoji
 from googletrans import Translator
 from userbot.utils import admin_cmd
-        
+
+ 
+@borg.on(admin_cmd("sm ?(.*)"))
+async def _(event):
+    if event.fwd_from:
+        return 
+    if not event.reply_to_msg_id:
+       await event.edit("```Reply to any user message.```")
+       return
+    reply_message = await event.get_reply_message() 
+    if not reply_message.text:
+       await event.edit("```reply to text message```")
+       return
+    chat = "@SangMataInfo_bot"
+    sender = reply_message.sender
+    if reply_message.sender.bot:
+       await event.edit("```Reply to actual users message.```")
+       return
+    await event.edit("```Processing```")
+    async with borg.conversation(chat) as conv:
+          try:     
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
+             # await borg.forward_messages(chat, reply_message)
+              await silently_send_message(chat,"/generate")
+              response = await response 
+          except YouBlockedUserError: 
+              await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+              return
+          if response.text.startswith("Forward"):
+             await event.edit("```can you kindly disable your forward privacy settings for good?```")
+          else: 
+             await event.edit(f"{response.message.message}")     
     
 @borg.on(admin_cmd("ud (.*)"))
 async def _(event):
