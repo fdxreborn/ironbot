@@ -101,6 +101,8 @@ async def update(event, repo, ups_rem, ac_br):
     await event.edit('`Ironbot Di Restart....`')
     await asyncio.sleep(1)
     await event.edit('`Silahkan Tunggu Beberapa Detik!`')
+    await asyncio.sleep(3)
+    await event.delete()
 
     if BOTLOG:
             await event.client.send_message(
@@ -168,6 +170,8 @@ async def upstream(event):
     if changelog == '' and force_update is False:
         await event.edit(
             f'\n`🔥Ironbot🔥\n`sudah **versi terbaru**\n`BRANCH:`**{UPSTREAM_REPO_BRANCH}**\n')
+        await asyncio.sleep(3)
+        await event.delete()
         return repo.__del__()
 
     if conf is None and force_update is False:
@@ -186,7 +190,7 @@ async def upstream(event):
         else:
             await event.edit(changelog_str)
         return await event.respond('`ketik ".update now/deploy" untuk mengupdate`')
-        await asyncio.sleep(10)
+        await asyncio.sleep(5)
         await event.delete()
 
     if force_update:
