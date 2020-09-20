@@ -1,6 +1,5 @@
 import asyncio, io, os, random, re, textwrap
 from random import randint, uniform
-from userbot.utils import defender_kanger
 from glitch_this import ImageGlitcher
 from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
 from telethon import events, functions, types
