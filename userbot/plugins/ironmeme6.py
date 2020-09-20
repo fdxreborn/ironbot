@@ -126,7 +126,7 @@ async def _(event):
          '😧',
          '😡',
          '😢',
-         '__**...BOY oh BOY! i feel like a wamen....**__'
+         '__**...Eaaa....**__'
      ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -147,7 +147,7 @@ async def _(event):
          '😁🏽',
          '😁🏼',
          '\u200e😁',
-         '**Fair & Lovely GeNg Is BeHiNd You....**']
+         '**End...**']
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[(i % 6)])
