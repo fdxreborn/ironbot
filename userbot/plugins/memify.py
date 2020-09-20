@@ -5,6 +5,15 @@ import os
 from userbot import CMD_HELP, LOGS
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
+def convert_toimage(image):
+    img = Image.open(image)
+    if img.mode != "RGB":
+        img = img.convert("RGB")
+    img.save("temp.jpg", "jpeg")
+    os.remove(image)
+    return "temp.jpg"
+
+
 @borg.on(admin_cmd(outgoing=True, pattern="(mmf|mms) ?(.*)"))
 #@borg.on(sudo_cmd(pattern="(mmf|mms) ?(.*)", allow_sudo=True))
 async def memes(cat):
