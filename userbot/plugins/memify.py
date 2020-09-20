@@ -1,4 +1,4 @@
-import asyncio, io, os, random, re, textwrap, request
+import asyncio, io, os, random, re, textwrap, requests
 from random import randint, uniform
 from glitch_this import ImageGlitcher
 from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
