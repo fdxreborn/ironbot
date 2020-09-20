@@ -481,6 +481,8 @@ async def _(event):
         end = datetime.datetime.now()
         ms = (end - start).seconds
         await event.edit("`Proses penghapusan selama {} detik, powered by @Ironbots`".format(ms))
+        await asyncio.sleep(5)
+        await event.delete()
     else:
         await event.edit("ReMove.BG API returned Errors. Please report to @Ironbots\n`{}".format(output_file_name.content.decode("UTF-8")))
 
