@@ -1,164 +1,246 @@
-import PIL.ImageOps
-import requests
-from PIL import Image, ImageDraw, ImageFont
-from wand.color import Color
-from wand.drawing import Drawing
-from wand.image import Image as catimage
-import asyncio
-import os
+import asyncio, io, os, random, re, textwrap
+from random import randint, uniform
+from userbot.utils import defender_kanger
+from glitch_this import ImageGlitcher
+from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
+from telethon import events, functions, types
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl.types import DocumentAttributeFilename
+from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
+from userbot.events import register
+THUMB_IMAGE_PATH = './thumb_image.jpg'
 
-from userbot import CMD_HELP, LOGS
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+@register(outgoing=True, pattern='^\\.mmf(?: |$)(.*)')
+async def mim(event):
+    if event.fwd_from:
+        return
+    else:
+        if not event.reply_to_msg_id:
+            await event.edit("`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' ")
+            return
+        reply_message = await event.get_reply_message()
+        await (reply_message.media or event.edit('```reply to a image/sticker/gif```'))
+        return
+    reply_message.sender
+    await bot.download_file(reply_message.media)
+    if reply_message.sender.bot:
+        await event.edit('```Reply to actual users message.```')
+        return
+    await event.edit('```Transfiguration Time! Mwahaha Memifying this image! (」ﾟﾛﾟ)｣ ```')
+    await asyncio.sleep(5)
+    text = event.pattern_match.group(1)
+    if event.reply_to_msg_id:
+        file_name = 'meme.jpg'
+        reply_message = await event.get_reply_message()
+        to_download_directory = TEMP_DOWNLOAD_DIRECTORY
+        downloaded_file_name = os.path.join(to_download_directory, file_name)
+        downloaded_file_name = await bot.download_media(reply_message, downloaded_file_name)
+        dls_loc = downloaded_file_name
+    webp_file = await draw_meme_text(dls_loc, text)
+    await event.client.send_file((event.chat_id),
+      webp_file, reply_to=(event.reply_to_msg_id))
+    await event.delete()
+    os.remove(webp_file)
 
-def convert_toimage(image):
-    img = Image.open(image)
-    if img.mode != "RGB":
-        img = img.convert("RGB")
-    img.save("temp.jpg", "jpeg")
-    os.remove(image)
-    return "temp.jpg"
 
-async def cat_meme(topString, bottomString, filename, endname):
-    img = Image.open(filename)
-    imageSize = img.size
-    # find biggest font size that works
-    fontSize = int(imageSize[1] / 5)
-    font = ImageFont.truetype("userbot/helpers/impact.ttf", fontSize)
-    topTextSize = font.getsize(topString)
-    bottomTextSize = font.getsize(bottomString)
-    while topTextSize[0] > imageSize[0] - 20 or bottomTextSize[0] > imageSize[0] - 20:
-        fontSize = fontSize - 1
-        font = ImageFont.truetype("userbot/helpers/styles/impact.ttf", fontSize)
-        topTextSize = font.getsize(topString)
-        bottomTextSize = font.getsize(bottomString)
-
-    # find top centered position for top text
-    topTextPositionX = (imageSize[0] / 2) - (topTextSize[0] / 2)
-    topTextPositionY = 0
-    topTextPosition = (topTextPositionX, topTextPositionY)
-
-    # find bottom centered position for bottom text
-    bottomTextPositionX = (imageSize[0] / 2) - (bottomTextSize[0] / 2)
-    bottomTextPositionY = imageSize[1] - bottomTextSize[1]
-    bottomTextPosition = (bottomTextPositionX, bottomTextPositionY)
+async def draw_meme_text(image_path, text):
+    img = Image.open(image_path)
+    os.remove(image_path)
+    i_width, i_height = img.size
+    m_font = ImageFont.truetype('fontx/FontRemix.ttf', int(0.13013698630136986 * i_width))
+    if ';' in text:
+        upper_text, lower_text = text.split(';')
+    else:
+        upper_text = text
+        lower_text = ''
     draw = ImageDraw.Draw(img)
-    # draw outlines
-    # there may be a better way
-    outlineRange = int(fontSize / 15)
-    for x in range(-outlineRange, outlineRange + 1):
-        for y in range(-outlineRange, outlineRange + 1):
-            draw.text(
-                (topTextPosition[0] + x, topTextPosition[1] + y),
-                topString,
-                (0, 0, 0),
-                font=font,
-            )
-            draw.text(
-                (bottomTextPosition[0] + x, bottomTextPosition[1] + y),
-                bottomString,
-                (0, 0, 0),
-                font=font,
-            )
-    draw.text(topTextPosition, topString, (255, 255, 255), font=font)
-    draw.text(bottomTextPosition, bottomString, (255, 255, 255), font=font)
-    img.save(endname)
+    current_h, pad = (10, 5)
+    if upper_text:
+        for u_text in textwrap.wrap(upper_text, width=18):
+            u_width, u_height = draw.textsize(u_text, font=m_font)
+            draw.text(xy=(
+             (i_width - u_width) / 2 - 1, int(current_h / 730 * i_width)),
+              text=u_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2 + 1, int(current_h / 730 * i_width)),
+              text=u_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2, int(current_h / 730 * i_width) - 1),
+              text=u_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2, int(current_h / 730 * i_width) + 1),
+              text=u_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2, int(current_h / 730 * i_width)),
+              text=u_text,
+              font=m_font,
+              fill=(255, 255, 255))
+            current_h += u_height + pad
+
+    if lower_text:
+        for l_text in textwrap.wrap(lower_text, width=18):
+            u_width, u_height = draw.textsize(l_text, font=m_font)
+            draw.text(xy=(
+             (i_width - u_width) / 2 - 1,
+             i_height - u_height - int(0.0410958904109589 * i_width)),
+              text=l_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2 + 1,
+             i_height - u_height - int(0.0410958904109589 * i_width)),
+              text=l_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2,
+             i_height - u_height - int(0.0410958904109589 * i_width) - 1),
+              text=l_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2,
+             i_height - u_height - int(0.0410958904109589 * i_width) + 1),
+              text=l_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2,
+             i_height - u_height - int(0.0410958904109589 * i_width)),
+              text=l_text,
+              font=m_font,
+              fill=(255, 255, 255))
+            current_h += u_height + pad
+
+    image_name = 'memify.webp'
+    webp_file = os.path.join(TEMP_DOWNLOAD_DIRECTORY, image_name)
+    img.save(webp_file, 'WebP')
+    return webp_file
 
 
-@borg.on(admin_cmd(outgoing=True, pattern="(mmf|mms) ?(.*)"))
-#@borg.on(sudo_cmd(pattern="(mmf|mms) ?(.*)", allow_sudo=True))
-async def memes(cat):
-    cmd = cat.pattern_match.group(1)
-    catinput = cat.pattern_match.group(2)
-    reply = await cat.get_reply_message()
-    if not (reply and (reply.media)):
-        await edit_or_reply(cat, "`Reply to supported Media...`")
+@register(outgoing=True, pattern='^\\.mmf2(?: |$)(.*)')
+async def mim(event):
+    if event.fwd_from:
         return
-    catid = cat.reply_to_msg_id
-    if catinput:
-        if ";" in catinput:
-            top, bottom = catinput.split(";", 1)
-        else:
-            top = catinput
-            bottom = ""
     else:
-        await edit_or_reply(
-            cat, "```what should i write on that u idiot give some text```"
-        )
-        return
-    if not os.path.isdir("./temp/"):
-        os.mkdir("./temp/")
-    cat = await edit_or_reply(cat, "`Downloading media......`")
-    from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-
-    await asyncio.sleep(2)
-    catsticker = await reply.download_media(file="./temp/")
-    if not catsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
-        os.remove(catsticker)
-        await edit_or_reply(cat, "```Supported Media not found...```")
-        return
-    import pybase64
-
-    if catsticker.endswith(".tgs"):
-        await cat.edit(
-            "```Transfiguration Time! Mwahaha memifying this animated sticker! (」ﾟﾛﾟ)｣```"
-        )
-        catfile = os.path.join("./temp/", "meme.png")
-        catcmd = (
-            f"lottie_convert.py --frame 0 -if lottie -of png {catsticker} {catfile}"
-        )
-        stdout, stderr = (await runcmd(catcmd))[:2]
-        if not os.path.lexists(catfile):
-            await cat.edit("`Template not found...`")
-            LOGS.info(stdout + stderr)
-        meme_file = catfile
-    elif catsticker.endswith(".webp"):
-        await cat.edit(
-            "```Transfiguration Time! Mwahaha memifying this sticker! (」ﾟﾛﾟ)｣```"
-        )
-        catfile = os.path.join("./temp/", "memes.png")
-        os.rename(catsticker, catfile)
-        if not os.path.lexists(catfile):
-            await cat.edit("`Template not found... `")
+        if not event.reply_to_msg_id:
+            await event.edit("`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' ")
             return
-        meme_file = catfile
-    elif catsticker.endswith((".mp4", ".mov")):
-        await cat.edit(
-            "```Transfiguration Time! Mwahaha memifying this video! (」ﾟﾛﾟ)｣```"
-        )
-        catfile = os.path.join("./temp/", "memes.png")
-        await take_screen_shot(catsticker, 0, catfile)
-        if not os.path.lexists(catfile):
-            await cat.edit("```Template not found...```")
-            return
-        meme_file = catfile
+        reply_message = await event.get_reply_message()
+        await (reply_message.media or event.edit('```reply to a image/sticker/gif```'))
+        return
+    reply_message.sender
+    await bot.download_file(reply_message.media)
+    if reply_message.sender.bot:
+        await event.edit('```Reply to actual users message.```')
+        return
+    await event.edit('```Transfiguration Time! Mwahaha Memifying this image! (」ﾟﾛﾟ)｣ ```')
+    await asyncio.sleep(5)
+    text = event.pattern_match.group(1)
+    if event.reply_to_msg_id:
+        file_name = 'meme.jpg'
+        reply_message = await event.get_reply_message()
+        to_download_directory = TEMP_DOWNLOAD_DIRECTORY
+        downloaded_file_name = os.path.join(to_download_directory, file_name)
+        downloaded_file_name = await bot.download_media(reply_message, downloaded_file_name)
+        dls_loc = downloaded_file_name
+    webp_file = await draw_meme_text(dls_loc, text)
+    await event.client.send_file((event.chat_id),
+      webp_file, reply_to=(event.reply_to_msg_id))
+    await event.delete()
+    os.remove(webp_file)
+
+
+async def draw_meme_text(image_path, text):
+    img = Image.open(image_path)
+    os.remove(image_path)
+    i_width, i_height = img.size
+    m_font = ImageFont.truetype('fontx/FontRemix2.ttf', int(0.13013698630136986 * i_width))
+    if ';' in text:
+        upper_text, lower_text = text.split(';')
     else:
-        await cat.edit(
-            "```Transfiguration Time! Mwahaha memifying this image! (」ﾟﾛﾟ)｣```"
-        )
-        meme_file = catsticker
-    try:
-        san = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-        san = Get(san)
-        await cat.client(san)
-    except BaseException:
-        pass
-    meme_file = convert_toimage(meme_file)
-    if cmd == "mmf":
-        meme = "catmeme.jpg"
-        if max(len(top), len(bottom)) < 21:
-            await cat_meme(top, bottom, meme_file, meme)
-        else:
-            await cat_meeme(top, bottom, meme_file, meme)
-        await borg.send_file(cat.chat_id, meme, reply_to=catid)
-    elif cmd == "mms":
-        meme = "catmeme.webp"
-        if max(len(top), len(bottom)) < 21:
-            await cat_meme(top, bottom, meme_file, meme)
-        else:
-            await cat_meeme(top, bottom, meme_file, meme)
-        await borg.send_file(cat.chat_id, meme, reply_to=catid)
-    await cat.delete()
-    os.remove(meme)
-    for files in (catsticker, meme_file):
-        if files and os.path.exists(files):
-            os.remove(files)
+        upper_text = text
+        lower_text = ''
+    draw = ImageDraw.Draw(img)
+    current_h, pad = (10, 5)
+    if upper_text:
+        for u_text in textwrap.wrap(upper_text, width=18):
+            u_width, u_height = draw.textsize(u_text, font=m_font)
+            draw.text(xy=(
+             (i_width - u_width) / 2 - 1, int(current_h / 730 * i_width)),
+              text=u_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2 + 1, int(current_h / 730 * i_width)),
+              text=u_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2, int(current_h / 730 * i_width) - 1),
+              text=u_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2, int(current_h / 730 * i_width) + 1),
+              text=u_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2, int(current_h / 730 * i_width)),
+              text=u_text,
+              font=m_font,
+              fill=(255, 255, 255))
+            current_h += u_height + pad
+
+    if lower_text:
+        for l_text in textwrap.wrap(lower_text, width=18):
+            u_width, u_height = draw.textsize(l_text, font=m_font)
+            draw.text(xy=(
+             (i_width - u_width) / 2 - 1,
+             i_height - u_height - int(0.0410958904109589 * i_width)),
+              text=l_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2 + 1,
+             i_height - u_height - int(0.0410958904109589 * i_width)),
+              text=l_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2,
+             i_height - u_height - int(0.0410958904109589 * i_width) - 1),
+              text=l_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2,
+             i_height - u_height - int(0.0410958904109589 * i_width) + 1),
+              text=l_text,
+              font=m_font,
+              fill=(0, 0, 0))
+            draw.text(xy=(
+             (i_width - u_width) / 2,
+             i_height - u_height - int(0.0410958904109589 * i_width)),
+              text=l_text,
+              font=m_font,
+              fill=(255, 255, 255))
+            current_h += u_height + pad
+
+    image_name = 'memify.webp'
+    webp_file = os.path.join(TEMP_DOWNLOAD_DIRECTORY, image_name)
+    img.save(webp_file, 'WebP')
+    return webp_file
+
+
+CMD_HELP.update({'memify': '`.mmf` texttop ; textbottom        \nUsage: Reply a sticker/image/gif and send with cmd.\n`.mmf2` texttop ; textbottom        \nUsage: Reply a sticker/image/gif and send with cmd.'})
+
