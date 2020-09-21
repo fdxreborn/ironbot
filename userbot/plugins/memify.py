@@ -97,7 +97,7 @@ async def memes(cat):
         return
     import pybase64
 
-    if catsticker.endswith(".tgs"):
+    if catsticker.endswith(".webp"):
         await cat.edit(
             "```Transfiguration Time! Mwahaha memifying this animated sticker! (」ﾟﾛﾟ)｣```"
         )
