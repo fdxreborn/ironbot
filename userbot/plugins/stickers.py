@@ -484,7 +484,9 @@ async def _(event):
         await asyncio.sleep(3)
         await event.delete()
     else:
-        await event.edit("ReMove.BG API returned Errors. Please report to @Ironbots\n`{}".format(output_file_name.content.decode("UTF-8")))
+        await event.edit("**Itu bukan img/png Goblokkk!!**".format(output_file_name.content.decode("UTF-8")))
+        await asyncio.sleep(1)
+        await event.delete()
 
 def ReTrieveFile(input_file_name):
     headers = {
