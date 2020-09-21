@@ -115,7 +115,7 @@ async def memes(cat):
         await cat.edit(
             "```Transfiguration Time! Mwahaha memifying this sticker! (」ﾟﾛﾟ)｣```"
         )
-        catfile = os.path.join("./temp/", "memes.png")
+        catfile = os.path.join("./temp/", "memes.jpg")
         os.rename(catsticker, catfile)
         if not os.path.lexists(catfile):
             await cat.edit("`Template not found... `")
@@ -125,7 +125,7 @@ async def memes(cat):
         await cat.edit(
             "```Transfiguration Time! Mwahaha memifying this video! (」ﾟﾛﾟ)｣```"
         )
-        catfile = os.path.join("./temp/", "memes.png")
+        catfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(catsticker, 0, catfile)
         if not os.path.lexists(catfile):
             await cat.edit("```Template not found...```")
@@ -144,7 +144,7 @@ async def memes(cat):
         pass
     meme_file = convert_toimage(meme_file)
     if cmd == "mmf":
-        meme = "catmeme.png"
+        meme = "catmeme.webp"
         if max(len(top), len(bottom)) < 21:
             await cat_meme(top, bottom, meme_file, meme)
         else:
