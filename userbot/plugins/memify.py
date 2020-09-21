@@ -10,6 +10,14 @@ from userbot import CMD_HELP, LOGS
 from userbot.helpers import runss
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
+import shlex
+from os import getcwd
+from os.path import basename, join
+from textwrap import wrap
+from typing import Optional, Tuple
+
+
+
 def convert_toimage(image):
     img = Image.open(image)
     if img.mode != "RGB":
