@@ -485,7 +485,7 @@ async def _(event):
         await event.delete()
     else:
         await event.edit("**Itu bukan img/png Goblokkk!!**".format(output_file_name.content.decode("UTF-8")))
-        await asyncio.sleep(1)
+        await asyncio.sleep(2)
         await event.delete()
 
 def ReTrieveFile(input_file_name):
