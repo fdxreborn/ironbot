@@ -7,6 +7,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeFilename
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.events import register
+from userbot.utils import check_media
 THUMB_IMAGE_PATH = './thumb_image.jpg'
 
 @register(outgoing=True, pattern='^\\.mmf(?: |$)(.*)')
