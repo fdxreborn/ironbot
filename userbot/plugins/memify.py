@@ -12,7 +12,7 @@ from userbot.utils import check_media
 THUMB_IMAGE_PATH = './thumb_image.jpg'
 
 @register(outgoing=True, pattern='^\\.mmf(?: |$)(.*)')
-async def mim(event):
+async def _(event):
     if event.fwd_from:
         return
     else:
@@ -128,7 +128,7 @@ async def draw_meme_text(image_path, text):
 
 
 @register(outgoing=True, pattern='^\\.mmf2(?: |$)(.*)')
-async def mim(event):
+async def _(event):
     if event.fwd_from:
         return
     else:
