@@ -1,7 +1,3 @@
-# uncompyle6 version 3.7.4
-# Python bytecode 3.8
-# Decompiled from: Python 3.8.5 (default, Jul 24 2020, 12:30:11) 
-# [Clang 9.0.8 (https://android.googlesource.com/toolchain/llvm-project 98c855489
 import asyncio, io, os, random, re, textwrap
 from random import randint, uniform
 from glitch_this import ImageGlitcher
