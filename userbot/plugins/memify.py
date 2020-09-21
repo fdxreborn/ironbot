@@ -6,7 +6,6 @@ from wand.drawing import Drawing
 from wand.image import Image as catimage
 import asyncio
 import os
-
 from userbot import CMD_HELP, LOGS
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
