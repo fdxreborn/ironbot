@@ -109,7 +109,6 @@ if ENV:
         GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
         #MongoDB
         MONGO_URI = os.environ.get("MONGO_URI", None)
-        ALIVE_IMG = os.environ.get("ALIVE_IMG", None)
         PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
         #Lydia API
         LYDIA_API = os.environ.get("LYDIA_API",None)
