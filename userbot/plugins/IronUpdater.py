@@ -210,7 +210,8 @@ async def upstream(event):
         return repo.__del__()
 
     if conf == "" and not force_update:
-        await print_changelogs(event, ac_br, changelog)
+      #  await print_changelogs(event, ac_br, changelog)
+        await event.edit("** A D A  U P D A T E  G A N **")
         await event.delete()
         return await event.respond("`Ketik : •.update now/.update deploy untuk update ironbot.`")
 
