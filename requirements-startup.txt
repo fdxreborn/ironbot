@@ -58,3 +58,4 @@ youtube-dl
 covid
 psutil
 glitch_this
+youtube_search
