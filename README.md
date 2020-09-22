@@ -1,6 +1,6 @@
 # IRON-BOT
 
-<p align="center"><img src="https://telegra.ph/file/d48eab138afb66385f1f9.jpg"/></p>
+<p align="center"><img src="https://telegra.ph/file/aece629756cbb1899be93.jpg"/></p>
 
 <p align="center">
     <img alt="Ironbot-" src="https://img.shields.io/badge/Ver-1.1.0-brightgreen?style=for-the-badge&logo=appveyor"/>
