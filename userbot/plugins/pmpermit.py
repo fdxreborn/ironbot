@@ -25,7 +25,7 @@ USER_BOT_NO_WARN = ("`Halo bro! Ini `**Ironbot**\n\n"
 
 
 if Var.PRIVATE_GROUP_ID is not None:
-    @command(pattern="(approve|ap) ?(.*)")
+    @command(pattern=r"(approve|ap) ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
            return
@@ -46,7 +46,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await event.delete()
 
 
-    @command(pattern="(block|bl) ?(.*)")
+    @command(pattern=r"(block|bl) ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -65,7 +65,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await asyncio.sleep(3)
                 await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @command(pattern="(disapprove|dp) ?(.*)")
+    @command(pattern=r"(disapprove|dp) ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -82,7 +82,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await event.edit("Tidak di izinkan[{}](tg://user?id={})".format(firstname, chat.id))            
     
 
-    @command(pattern="(listapproved|la)")
+    @command(pattern=r"(listapproved|la)")
     async def approve_p_m(event):
         if event.fwd_from:
             return
