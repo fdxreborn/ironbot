@@ -1,3 +1,7 @@
+<a href="https://telegra.ph/file/d48eab138afb66385f1f9.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="781" data-original-width="800" height="624" src="https://telegra.ph/file/d48eab138afb66385f1f9.jpg" width="640" /></a></div>
+<div>
+<br /></div>
+
 ## Installing Heroku 
 
 ### The Easy Way
