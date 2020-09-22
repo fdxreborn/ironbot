@@ -202,7 +202,7 @@ async def upstream(event):
 
     if changelog == "" and not force_update:
         await event.edit(
-            "\n`➰ Ironbot Info ➰`\n\n`Versi  :`  **terbaru**\n`Base on :`  "
+            "\n`➰ Ironbot Info ➰`\n\n`Versi   :`  **terbaru**\n`Base on :`  "
             f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         await asyncio.sleep(3)
