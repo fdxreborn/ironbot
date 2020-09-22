@@ -27,7 +27,7 @@ async def img_sampler(event):
         return await edit_or_reply(
             event, "Reply to a message or pass a query to search!"
         )
-    await event.edit("`Processing...`")
+    await event.edit("`Mencari gambar..`")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
         if lim > 10:
