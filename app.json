@@ -49,11 +49,6 @@
       "description": "Fill your Full name or Username like @watefuk",
       "value": ""
     },
-    "ALIVE_IMG": {
-      "description": "Custom your alive image",
-      "value": "",
-      "required": false
-    },
     "APP_ID": {
       "description": "Get this value from my.telegram.org! Please do not steal",
       "value": ""
@@ -112,6 +107,10 @@
     },
     "OPEN_WEATHER_MAP_APPID": {
       "description": "Get your own APPID from https://api.openweathermap.org/data/2.5/weather",
+      "required": false
+    },
+    "ALIVE_IMG": {
+      "description": "Custom your alive image ",
       "required": false
     },
     "TZ": {
