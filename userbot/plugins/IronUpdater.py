@@ -213,30 +213,6 @@ async def upstream(event):
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond("😎 **Ketik** :\n•`.update now`\n•`.update deploy`\nuntuk update ironbot.🔥")
-async def _(delme):
-    message = delme.text
-    count = int(message[9:])
-    i = 1
-
-    async for message in delme.client.iter_messages(delme.chat_id, from_user="me"):
-        if i > count + 1:
-            break
-        i = i + 1
-        await message.delete()
-
-    smsg = await delme.client.send_message(
-        delme.chat_id,
-        "`Purge complete!` Purged " + str(count) + " messages.",
-    )
-    if BOTLOG:
-        await delme.client.send_message(
-            BOTLOG_CHATID,
-            "#PURGEME \nPurge of " + str(count) + " messages done successfully.",
-        )
-    await sleep(2)
-    i = 1
-    await smsg.delete()
-
 
     if force_update:
         await event.edit(
