@@ -92,7 +92,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             )
             return repo.__del__()
         await event.edit(
-           "" "`⚡Deploying ironbot, check .alive jika sudah 5-10min...`"
+            "" "`⚡Deploying ironbot, check .alive jika sudah 5-10min...`"
         )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
