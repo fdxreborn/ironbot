@@ -110,7 +110,7 @@ if ENV:
         #MongoDB
         MONGO_URI = os.environ.get("MONGO_URI", None)
         PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
-        #Lydia API
+        ALIVE_IMG = os.environ.get("ALIVE_IMG", None)
         LYDIA_API = os.environ.get("LYDIA_API",None)
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
 else:
