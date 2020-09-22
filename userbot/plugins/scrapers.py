@@ -154,7 +154,7 @@ async def yt_search(video_q):
         if counter <= 0:
             counter = int(1)
     else:
-        counter = int(5)
+        counter = int(10)
 
     query = video_q.pattern_match.group(2)
     if not query:
