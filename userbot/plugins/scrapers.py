@@ -132,10 +132,14 @@ async def lang(value):
                 f"`Invalid Language code !!`\n`Available language codes for TTS`:\n\n`{tts_langs()}`"
             )
     await value.edit(f"`Bahasa untuk **{scraper}** berubah menjadi **{LANG.title()}**.`")
+    await asyncio.sleep(2)
+    await value.delete()
     if BOTLOG:
         await value.client.send_message(
             BOTLOG_CHATID,
             f"`Bahasa untuk {scraper} berubah menjadi {LANG.title()}.`")
+        await asyncio.sleep(3)
+        await value.delete()
 
 YOUTUBE_API_KEY = "AIzaSyCT8eXHkbJ3N2al7spP69nseRmYk5U1VHU"
 @register(outgoing=True, pattern="^\.yt (.*)")
