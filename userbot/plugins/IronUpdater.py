@@ -38,8 +38,6 @@ async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
         f"**Ada UPDATE Baru [{ac_br}]:\n\nPerubahan info :**\n`{changelog}`"
     )
-    await asyncio.sleep(3)
-    await message.delete()
     if len(changelog_str) > 4096:
         await event.edit("`Changelog is too big, view the file to see it.`")
         file = open("output.txt", "w+")
@@ -215,6 +213,8 @@ async def upstream(event):
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond("😎 **Ketik** :\n•`.update now`\n•`.update deploy`\nuntuk update ironbot.🔥")
+        await asyncio.sleep(3)
+        await message.delete()
 
     if force_update:
         await event.edit(
