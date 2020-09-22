@@ -51,6 +51,7 @@ async def print_changelogs(event, ac_br, changelog):
         await event.client.send_message(
             event.chat_id, changelog_str, reply_to=event.id,
         )
+        await message.delete()
     return True
 
 
