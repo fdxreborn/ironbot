@@ -8,7 +8,7 @@ from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Ironbots"
 
 @borg.on(admin_cmd(pattern="stupid$"))
-@borg.on(sudo_cmd(pattern="stupid$", allow_sudo=True))
+#@borg.on(sudo_cmd(pattern="stupid$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
