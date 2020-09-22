@@ -131,9 +131,14 @@ async def update(event, repo, ups_rem, ac_br):
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
-    await event.edit(
-        "🌟 **Berhasil Update!** 🌟\n`• Bot akan restart...\n• Tunggu 10-15 detik!`"
-    )
+    await event.edit("**B**")
+    await event.edit("**B E**")
+    await event.edit("**B E R**")
+    await event.edit("**B E R H**")
+    await event.edit("**B E R H A**")
+    await event.edit("**B E R H A S**")
+    await event.edit("**B E R H A S I**")
+    await event.edit("**B E R H A S I L**")
     await asyncio.sleep(5)
     await event.delete()
     # Spin a new instance of bot
