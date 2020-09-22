@@ -10,7 +10,7 @@ from userbot.utils import admin_cmd
 
 WARN_PIC = Config.PMPERMIT_PIC
 if WARN_PIC is None:
-  WARN_PIC = "https://telegra.ph/file/d48eab138afb66385f1f9.jpg"
+  WARN_PIC = "https://telegra.ph/file/aece629756cbb1899be93.jpg"
 
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
