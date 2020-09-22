@@ -54,7 +54,7 @@ async def img_sampler(event):
         await bot.get_input_entity(event.chat_id), lst, reply_to=reply_to_id
     )
     shutil.rmtree(os.path.dirname(os.path.abspath(lst[0])))
-    await cat.delete()
+    await event.delete()
 
 
 CMD_HELP.update(
