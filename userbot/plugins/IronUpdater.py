@@ -235,7 +235,7 @@ async def upstream(event):
             "`Force sync untuk ironbot,\ntunggu ya...`🛠️"
         )
         await update(event, repo, ups_rem, ac_br)
-        await asyncio.sleep(3)
+        await asyncio.sleep(4)
         await event.delete()
     if conf == "now":
         await asyncio.sleep(.1)
