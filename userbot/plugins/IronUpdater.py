@@ -132,7 +132,7 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     await event.edit(
-        "🔥 **Berhasil Update!** 🔥\n`• Bot akan restart...\n• Tunggu 10-15 detik!`"
+        "🌟 **Berhasil Update!** 🌟\n`• Bot akan restart...\n• Tunggu 10-15 detik!`"
     )
     await asyncio.sleep(5)
     await event.delete()
@@ -202,7 +202,7 @@ async def upstream(event):
 
     if changelog == "" and not force_update:
         await event.edit(
-            "\n`• Ironbot Info •`\n\nVersi :  **terbaru**\n`Base on :`  "
+            "\n`• Ironbot Info •`\n\n`Versi :`  **terbaru**\n`Base on :`  "
             f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         await asyncio.sleep(3)
@@ -212,7 +212,7 @@ async def upstream(event):
     if conf == "" and not force_update:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond("😎 **Ketik** :\n•`.update now`\n•`.update deploy`\nuntuk update ironbot.🔥")
+        return await event.respond("🔥 **Ketik** :\n•`.update now/.update deploy untuk update ironbot.`🔥")
 
     if force_update:
         await event.edit(
