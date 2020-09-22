@@ -7,14 +7,13 @@ from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Ironbots"
 
-@borg.on(admin_cmd(pattern="stupid$"))
-#@borg.on(sudo_cmd(pattern="stupid$", allow_sudo=True))
+@borg.on(admin_cmd(pattern=r"call"))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 1
     animation_ttl = range(0, 14)
-    event = await edit_or_reply(event, "brain")
+    await event.edit("Otakmu..")
     animation_chars = [
         "YOᑌᖇ ᗷᖇᗩIᑎ ➡️ 🧠\n\n🧠         <(^_^ <)🗑",
         "YOᑌᖇ ᗷᖇᗩIᑎ ➡️ 🧠\n\n🧠       <(^_^ <)  🗑",
