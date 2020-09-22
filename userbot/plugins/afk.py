@@ -31,7 +31,7 @@ async def set_not_afk(event):
         total_afk_time = str((afk_end - afk_start))
     current_message = event.message.message
     if ".afk" not in current_message and "yes" in USER_AFK:  # pylint:disable=E0602
-        shite = await borg.send_message(event.chat_id, f"__Hallo gua kembali! abis {reason} soalnya__\n\n`afk selama :``" + total_afk_time + "`")
+        shite = await borg.send_message(event.chat_id, f"__Abis {reason} soalnya__\n`afk selama `:`" + total_afk_time + "`")
         try:
             await borg.send_message(  # pylint:disable=E0602
                 SID,  # pylint:disable=E0602
