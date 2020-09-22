@@ -3,7 +3,7 @@
 <p align="center"><img src="https://telegra.ph/file/d48eab138afb66385f1f9.jpg"/></p>
 
 <p align="center">
-    <img alt="Ironbot-" src="https://img.shields.io/badge/Version-1.1.0-brightgreen"/>
+    <img alt="Ironbot-" src="https://img.shields.io/badge/Version-1.1.0-brightgreen?style=for-the-badge&logo=appveyor"/>
     <a href="https://github.com/tesbot07/ironbot/network/members"> <img src="https://img.shields.io/github/forks/tesbot07/ironbot?logo=github&style=for-the-badge" /></a>
     <a href="https://github.com/tesbot07/ironbot"> <img src="https://img.shields.io/github/repo-size/tesbot07/ironbot?logo=github&style=for-the-badge" /></a>
     <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?label=telethon&logo=pypi&logoColor=white&style=for-the-badge" /></a>
