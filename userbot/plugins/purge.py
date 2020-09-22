@@ -75,7 +75,7 @@ async def purgeme(delme):
 
     smsg = await delme.client.send_message(
         delme.chat_id,
-        "`Berhasil menghapus chat yang unfaedah`|" + str(count) + " messages.",
+        "`Berhasil menghapus chat yang unfaedah` | " + str(count) + " messages.",
     )
     if BOTLOG:
         await delme.client.send_message(
