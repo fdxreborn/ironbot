@@ -21,7 +21,7 @@ from datetime import datetime
 from os import remove
 from platform import python_version, uname
 from shutil import which
-
+from userbot.uniborgConfig import Config
 import psutil
 from telethon import __version__, version
 
