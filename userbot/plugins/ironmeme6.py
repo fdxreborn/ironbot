@@ -305,3 +305,14 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])
+
+@borg.on(admin_cmd(pattern=f"monkey$", outgoing=True))
+async def _(event):
+    if event.fwd_from:
+        return
+    animation_interval = 2
+    animation_ttl = range(0, 6)
+    animation_chars = ["🐵", "🙉", "🙈", "🙊", "🖕‎🐵🖕", "**Good to See you friend....**"]
+    for i in animation_ttl:
+        await asyncio.sleep(animation_interval)
+        await event.edit(animation_chars[i % 6])
