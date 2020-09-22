@@ -225,7 +225,7 @@ async def upstream(event):
     if conf == "" and not force_update:
       #  await print_changelogs(event, ac_br, changelog)
        # await event.delete()
-        await event.edit(f"** ADA UPDATE BOSS **\n`Base on :` [{ac_br}]:\n**PERUBAHAN INFO:**\n{changelog}\n`Ketik : .update now/.update deploy untuk update ironbot.`")
+        await event.edit(f"** ADA UPDATE BOSS **\n`Base on :` [{ac_br}]\n\n**PERUBAHAN INFO:**\n{changelog}\n`Ketik : .update now/.update deploy untuk update ironbot.`")
        # await event.respond("`Ketik : .update now/.update deploy untuk update ironbot.`")
 
     if force_update:
