@@ -20,8 +20,8 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars 
 CUSTOM_MIDDLE_PMP = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else ""
 USER_BOT_WARN_ZERO = "`  Sorry ya ke block , jangan spam makanya.` "
 USER_BOT_NO_WARN = ("`Halo bro! Ini `**Ironbot**\n\n"
-                   f"`Master saya` {DEFAULTUSER} `Mungkin masih sibuk`\n"
-                    "`Tunggu ya bro..` 🔥")
+                   f"`Master saya `{DEFAULTUSER}` mungkin masih sibuk.`\n"
+                    "`Tunggu ya bro..` ⚠️")
 
 
 if Var.PRIVATE_GROUP_ID is not None:
@@ -41,7 +41,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                     await PREV_REPLY_MESSAGE[chat.id].delete()
                     del PREV_REPLY_MESSAGE[chat.id]
                 pmpermit_sql.approve(chat.id, reason)
-                await event.edit("Diizinkan untuk pm [{}](tg://user?id={})".format(firstname, chat.id))
+                await event.edit("`Diizinkan untuk pm `[{}](tg://user?id={})".format(firstname, chat.id))
                 await asyncio.sleep(3)
                 await event.delete()
 
@@ -56,7 +56,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         chat = await event.get_chat()
         if event.is_private:
           if chat.id == 1178524273:
-            await event.edit("Why You tried to block my Creator, I Dont Like That now i will sleep for 100 seconds")
+            await event.edit("`Why You tried to block my Creator, I Dont Like That now i will sleep for 100 seconds`")
             await asyncio.sleep(100)
           else:
             if pmpermit_sql.is_approved(chat.id):
@@ -79,7 +79,7 @@ if Var.PRIVATE_GROUP_ID is not None:
           else:
             if pmpermit_sql.is_approved(chat.id):
                 pmpermit_sql.disapprove(chat.id)
-                await event.edit("Tidak di izinkan[{}](tg://user?id={})".format(firstname, chat.id))            
+                await event.edit("`Tidak di izinkan `[{}](tg://user?id={})".format(firstname, chat.id))            
     
 
     @command(pattern=r"^.(listapproved|la)")
