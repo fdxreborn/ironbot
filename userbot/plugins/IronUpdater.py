@@ -214,10 +214,10 @@ async def upstream(event):
         await event.delete()
         return await event.respond("😎 **Ketik** :\n•`.update now`\n•`.update deploy`\nuntuk update ironbot.🔥")
         async for message in delme.client.iter_messages(delme.chat_id, from_user="me"):
-        if i > 2 + 1:
-            break
-        i = i + 1
-        await message.delete()
+           if i > 2 + 1:
+                break
+           i = i + 1
+           await message.delete()
 
     if force_update:
         await event.edit(
