@@ -10,7 +10,7 @@ from userbot.utils import admin_cmd
 
 WARN_PIC = Config.PMPERMIT_PIC
 if WARN_PIC is None:
-  WARN_PIC = "https://telegra.ph/file/e70258c93898a7a040a04.jpg"
+  WARN_PIC = "https://telegra.ph/file/d48eab138afb66385f1f9.jpg"
 
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
@@ -20,12 +20,12 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars 
 CUSTOM_MIDDLE_PMP = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else ""
 USER_BOT_WARN_ZERO = "`  Sorry ya ke block , jangan spam makanya.` "
 USER_BOT_NO_WARN = ("`Halo bro! Ini `**Ironbot**\n\n"
-                   f"Guru saya {DEFAULTUSER} Mungkin masih sibuk\n"
-                    "**Tunggu ya bro..** 🔥")
+                   f"`Master saya` {DEFAULTUSER} `Mungkin masih sibuk`\n"
+                    "`Tunggu ya bro..` 🔥")
 
 
 if Var.PRIVATE_GROUP_ID is not None:
-    @command(pattern="^.approve ?(.*)")
+    @command(pattern="(approve|ap) ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
            return
@@ -46,7 +46,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await event.delete()
 
 
-    @command(pattern="^.block ?(.*)")
+    @command(pattern="(block|bl) ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -55,7 +55,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 709723121:
+          if chat.id == 1178524273:
             await event.edit("Why You tried to block my Creator, I Dont Like That now i will sleep for 100 seconds")
             await asyncio.sleep(100)
           else:
@@ -65,7 +65,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await asyncio.sleep(3)
                 await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @command(pattern="^.disapprove ?(.*)")
+    @command(pattern="(disapprove|dp) ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -74,7 +74,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 709723121:
+          if chat.id == 1178524273:
             await event.edit("Sorry, I Can't Disapprove My Master")
           else:
             if pmpermit_sql.is_approved(chat.id):
@@ -82,7 +82,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await event.edit("Tidak di izinkan[{}](tg://user?id={})".format(firstname, chat.id))            
     
 
-    @command(pattern="^.listapproved")
+    @command(pattern="(listapproved|la)")
     async def approve_p_m(event):
         if event.fwd_from:
             return
