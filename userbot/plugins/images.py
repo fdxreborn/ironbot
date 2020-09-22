@@ -8,7 +8,7 @@ import os
 import shutil
 
 from .. import CMD_HELP
-from ..helpers.google_image_download import googleimagesdownload
+from ..helpers.google_images_download import googleimagesdownload
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
