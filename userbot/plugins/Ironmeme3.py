@@ -1,6 +1,3 @@
-"""
-Available Commands:
-.music"""
 
 from telethon import events, functions, __version__
 import asyncio, os, sys
