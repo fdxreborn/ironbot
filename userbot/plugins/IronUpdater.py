@@ -239,7 +239,7 @@ async def upstream(event):
 @register(outgoing=True, pattern=r"^\.repo$")
 async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
-    await wannasee.edit("[Repo](https://github.com/tesbot07/ironbot) Lihat ke GitHub.")
+    await wannasee.edit("`Ironbot repo klik` [Disini!](https://github.com/tesbot07/ironbot).")
 
 
 CMD_HELP.update(
