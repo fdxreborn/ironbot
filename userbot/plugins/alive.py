@@ -67,7 +67,7 @@ async def _(alive):
     hmm = bot.uid
     IMG = Config.ALIVE_IMG
     if IMG is None:
-        IMG = "https://drive.google.com/uc?id=1BWR-nhFNe8oupi-4SoySVEJWn_G6QsaL&export=download"
+        IMG = "https://drive.google.com/uc?id=1-Mnv3SDxJVc0BWAdasEoIlVBtO9PtbCZ&export=download"
     Alive_caption = (
          "` ---͓̽-͓̽ ͓̽I͓̽R͓̽O͓̽N͓̽-͓̽B͓̽O͓̽T͓̽ ͓̽-͓̽-͓̽--`\n"
          "╭━━━━━━━━━━━━━━━━━━━╮\n"
