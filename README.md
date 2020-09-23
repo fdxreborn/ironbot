@@ -15,7 +15,7 @@
 ```python3
 The Easy Way:
 ```
-[![Deploy To Heroku](https://img.shields.io/badge/%E2%86%91_Deploy_to-Heroku-7056bf.svg?style=flat)](https://heroku.com/deploy?template=https://github.com/tesbot07/ironbot/)
+[![Deploy To Heroku](https://telegra.ph/file/1774bad480414b3f1bb66.png)](https://heroku.com/deploy?template=https://github.com/tesbot07/ironbot/)
 
 ## Generate String Session
 ```python3
