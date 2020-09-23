@@ -109,6 +109,10 @@
       "description": "Custom your alive image ",
       "required": false
     },
+    "PMPERMIT_PIC": {
+      "description": "Custom your PM permit image ",
+      "required": false
+    },
     "TZ": {
       "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
       "value": "Asia/Jakarta",
