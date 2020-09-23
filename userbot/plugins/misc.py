@@ -98,7 +98,7 @@ async def _(event):
     start = datetime.now()
     await event.edit("Pong!")
     end = datetime.now()
-    ms = (end - start).microseconds / 1000
+    ms = (end - start).microseconds / 100
     await event.edit("Pong!\n{}".format(ms))
 
 
