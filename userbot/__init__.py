@@ -22,6 +22,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 
 from var import Var
 StartTime = time.time()
+ironversion = "1.1.0"
 
 os.system("pip install --upgrade pip")
 if Var.STRING_SESSION:
