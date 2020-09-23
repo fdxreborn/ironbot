@@ -1,2 +1,2 @@
 run:
-   worker: python -m userbot
+   worker: python3 -m userbot
