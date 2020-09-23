@@ -75,7 +75,7 @@ async def _(alive):
         f"┣[•⚙️ `Telethon : v.{version.__version__}`\n"
         f"┣[•💡 `Base on  : {UPSTREAM_REPO_BRANCH}`\n"
         f"┣[•🕒 `Uptime.  : {uptime}`\n"
-        f"╰━━━━━━━━━━━━━━━━━━━━━╯\n"
+        f"╰━━━━━━━━━━━━━━━━━━━━╯\n"
     )
     await borg.send_file(alive.chat_id, IMG,caption=Alive_caption)
     await alive.delete() 
