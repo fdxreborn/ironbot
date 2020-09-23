@@ -111,6 +111,7 @@ if ENV:
         MONGO_URI = os.environ.get("MONGO_URI", None)
         PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
         ALIVE_IMG = os.environ.get("ALIVE_IMG", None)
+        WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", None)
         LYDIA_API = os.environ.get("LYDIA_API",None)
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
 else:
