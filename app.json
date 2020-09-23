@@ -1,5 +1,5 @@
 {
-  "name": "Ironbots Userbot",
+  "name": "Ironbots",
   "description": "Ironbot created by a @watefuk",
   "logo": "https://telegra.ph/file/aece629756cbb1899be93.jpg",
     "keywords": [
@@ -13,10 +13,6 @@
   "website": "https://github.com/tesbot07/ironbot",
   "success_url": "https://github.com/tesbot07/ironbot",
   "env": {
-    "ENV": {
-      "description": "Setting this to ANYTHING will enable heroku.",
-      "value": "ANYTHING"
-    },
     "TEMP_DOWNLOAD_DIRECTORY": {
       "description": "Where downloaded files will go.",
       "value": "./DOWNLOADS/",
@@ -82,11 +78,6 @@
       "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the token of your bot. And Don't Forget To Turn of inline Mode on bot settings. Get it.",
       "value": ""
     },
-    "SUDO_USERS": {
-      "description": "Makes your acc and bot stable",
-      "value": "1178524273",
-      "required": true
-    },
     "CHROME_BIN": {
       "description": "For Carbon.py. Leave as it is. ",
       "value": "/app/.apt/usr/bin/google-chrome",
@@ -121,11 +112,6 @@
       "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
       "value": "Asia/Jakarta",
       "required": false
-    },
-    "Agreement": {
-      "description": "Do You Owe Ceo Ironbot Helped To Create this Awesome bot Turn This True",
-      "value": "true",
-      "required": true
     }
   },
   "addons": [{
