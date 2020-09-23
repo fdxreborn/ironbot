@@ -318,6 +318,7 @@ async def repo_is_here(wannasee):
 async def _(alive):
     chat = await alive.get_chat()
     await alive.delete()
+    changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     uptime = await get_readable_time((time.time() - StartTime))
     IMG = Config.ALIVE_IMG
     if IMG is None:
