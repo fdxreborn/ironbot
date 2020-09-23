@@ -316,9 +316,55 @@ async def repo_is_here(wannasee):
 
 @register(outgoing=True, pattern=r"^\.(?:alive|on)\s?(.)?")
 async def _(alive):
+        off_repo = UPSTREAM_REPO_URL
+    force_update = False
+    try:
+        txt = "`Oops.. Updater tidak bisa berjalan "
+        txt += "beberapa masalah ditemukan`\n\n**LOGTRACE:**\n"
+        repo = Repo()
+    except NoSuchPathError as error:
+        await event.edit(f"{txt}\n`directory {error} is not found`")
+        return repo.__del__()
+    except GitCommandError as error:
+        await event.edit(f"{txt}\n`Early failure! {error}`")
+        return repo.__del__()
+    except InvalidGitRepositoryError as error:
+        if conf is None:
+            return await event.edit(
+                f"`sayangnya, direktori {error} "
+                "tampaknya bukan repositori git.\n"
+                "Tapi kita bisa memperbaikinya dengan memperbarui paksa menggunakan ironbot "
+                ".update now.`"
+            )
+        repo = Repo.init()
+        origin = repo.create_remote("upstream", off_repo)
+        origin.fetch()
+        force_update = True
+        repo.create_head("master", origin.refs.master)
+        repo.heads.master.set_tracking_branch(origin.refs.master)
+        repo.heads.master.checkout(True)
+
+    ac_br = repo.active_branch.name
+    if ac_br != UPSTREAM_REPO_BRANCH:
+        await event.edit(
+            "**[UPDATER]:**\n"
+            f"`Sepertinya Anda menggunakan branch kustom Anda sendiri ({ac_br}). "
+            "Dalam hal ini, Updater tidak dapat mengidentifikasi"
+            "Branch mana yang akan digabungkan."
+            "Silakan periksa ke branch asli`"
+        )
+        return repo.__del__()
+    try:
+        repo.create_remote("upstream", off_repo)
+    except BaseException:
+        pass
+
+    ups_rem = repo.remote("upstream")
+    ups_rem.fetch(ac_br)
+
+    changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     chat = await alive.get_chat()
     await alive.delete()
-    changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     uptime = await get_readable_time((time.time() - StartTime))
     IMG = Config.ALIVE_IMG
     if IMG is None:
@@ -333,7 +379,7 @@ async def _(alive):
         f"┣[•💡 `Base on  : {UPSTREAM_REPO_BRANCH} ➰`\n"
         f"┣[•🕒 `Uptime.  : {uptime} ➰`\n"
         f"╰━━━━━━━━━━━━━━━━━━━━╯\n"
-        f" {changelog}\n"
+        f"{changelog}\n"
     )
     await borg.send_file(alive.chat_id, IMG,caption=Alive_caption)
     await alive.delete() 
