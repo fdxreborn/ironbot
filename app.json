@@ -80,12 +80,12 @@
     },
     "CHROME_BIN": {
       "description": "For Carbon.py. Leave as it is. ",
-      "value": "/app/.apt/usr/bin/google-chrome",
+      "value": "/usr/bin/google-chrome",
       "required": false
     },
     "CHROME_DRIVER": {
       "description": "For Carbon.py. Leave as it is. ",
-      "value": "/app/.chromedriver/bin/chromedriver",
+      "value": "/usr/bin/chromedriver",
       "required": false
     },
     "TG_BOT_USER_NAME_BF_HER": {
