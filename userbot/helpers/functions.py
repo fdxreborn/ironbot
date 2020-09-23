@@ -11,7 +11,6 @@ from telethon.tl.types import Channel, PollAnswer
 from validators.url import url
 
 from userbot.uniborgConfig import Config
-from userbot import GOOGLE_CHROME_BIN
 
 
 async def get_readable_time(seconds: int) -> str:
@@ -64,7 +63,7 @@ async def catmusic(cat, QUALITY, hello):
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.binary_location = GOOGLE_CHROME_BIN
+    chrome_options.binary_location = Config.CHROME_BIN
     driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.get("https://www.youtube.com/results?search_query=" + search)
     user_data = driver.find_elements_by_xpath('//*[@id="video-title"]')
@@ -104,7 +103,7 @@ async def catmusicvideo(cat, hello):
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.binary_location = GOOGLE_CHROME_BIN
+    chrome_options.binary_location = Config.CHROME_BIN
     driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.get("https://www.youtube.com/results?search_query=" + search)
     user_data = driver.find_elements_by_xpath('//*[@id="video-title"]')
