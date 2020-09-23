@@ -317,10 +317,10 @@ async def _(event):
         return
     link = event.pattern_match.group(1)
     chat = "@SpotifyMusicDownloaderBot"
-    await event.edit("```Getting Your Music```")
+    await event.edit("```Nungguin yaa...```")
     async with bot.conversation(chat) as conv:
         await asyncio.sleep(2)
-        await event.edit("`Downloading music taking some times,  Stay Tuned.....`")
+        await event.edit("`Lagi download.....`")
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=752979930)
