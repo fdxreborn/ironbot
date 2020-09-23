@@ -118,12 +118,7 @@
       "value": "Asia/Jakarta",
       "required": false
     },
-	"SENDER_ID": {
-      "description": "Get Your Id From Sangmata Info Bot And Paste Your Permanent Id Here ",
-      "value": "",
-      "required": true
-    },
-	"Agreement": {
+    "Agreement": {
       "description": "Do You Owe Ceo Ironbot Helped To Create this Awesome bot Turn This True",
       "value": "true",
       "required": true
