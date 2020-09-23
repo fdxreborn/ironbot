@@ -40,7 +40,7 @@ INT_PLUG = ""
 LOAD_PLUG = {}
 
 # PaperPlaneExtended Support Vars
-ENV = os.environ.get("ENV", False)
+ENV = os.environ.get("ENV", True)
 """ PPE initialization. """
 
 from logging import basicConfig, getLogger, INFO, DEBUG
