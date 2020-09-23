@@ -16,7 +16,7 @@
 The Easy Way:
 ```
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tesbot07/ironbot/)
-
+[![Heroku App Status](http://heroku-shields.herokuapp.com/Ironbot)](https://Ironbot.herokuapp.com)
 ## Generate String Session
 ```python3
 Run on Repl.it:
