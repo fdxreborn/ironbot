@@ -24,7 +24,7 @@ from userbot.uniborgConfig import Config
 import psutil
 from telethon import __version__, version
 
-from userbot import CMD_HELP, StartTime, bot
+from userbot import CMD_HELP, StartTime, bot, ironversion
 from userbot.events import register
 
 
@@ -62,22 +62,20 @@ async def get_readable_time(seconds: int) -> str:
 async def _(alive):
     chat = await alive.get_chat()
     await alive.delete()
-    """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
-    hmm = bot.uid
     IMG = Config.ALIVE_IMG
     if IMG is None:
         IMG = "https://drive.google.com/uc?id=1-Mnv3SDxJVc0BWAdasEoIlVBtO9PtbCZ&export=download"
     Alive_caption = (
-         "` ---͓̽-͓̽ ͓̽I͓̽R͓̽O͓̽N͓̽-͓̽B͓̽O͓̽T͓̽ ͓̽-͓̽-͓̽--`\n"
-         "╭━━━━━━━━━━━━━━━━━━━╮\n"
-        f"┣[•👤 `USER     :` [{DEFAULTUSER}]\n"
+         "╭━━━━━━| 𝙸𝚁𝙾𝙽𝙱𝙾𝚃 |━━━━━━╮\n"
+        f"┣[•👤 `USER     :` {DEFAULTUSER}\n"
         f"┣▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n"
+        f"┣[•🤖 `Iron Ver : {ironversion}`\n"
         f"┣[•🐍 `Python.  : v.{python_version()}`\n"
         f"┣[•⚙️ `Telethon : v.{version.__version__}`\n"
         f"┣[•💡 `Base on  : {UPSTREAM_REPO_BRANCH}`\n"
         f"┣[•🕒 `Uptime.  : {uptime}`\n"
-        f"╰━━━━━━━━━━━━━━━━━━━╯\n"
+        f"╰━━━━━━━━━━━━━━━━━━━━━╯\n"
     )
     await borg.send_file(alive.chat_id, IMG,caption=Alive_caption)
     await alive.delete() 
