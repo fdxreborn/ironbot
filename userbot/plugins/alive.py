@@ -70,11 +70,11 @@ async def _(alive):
          "╭━━━━━━| 𝙸𝚁𝙾𝙽𝙱𝙾𝚃 |━━━━━━╮\n"
         f"┣[•👤 `USER     :` {DEFAULTUSER}\n"
         f"┣▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n"
-        f"┣[•🤖 `Iron Ver : {ironversion}`\n"
-        f"┣[•🐍 `Python.  : v.{python_version()}`\n"
-        f"┣[•⚙️ `Telethon : v.{version.__version__}`\n"
-        f"┣[•💡 `Base on  : {UPSTREAM_REPO_BRANCH}`\n"
-        f"┣[•🕒 `Uptime.  : {uptime}`\n"
+        f"┣[•🤖 `Iron Ver : {ironversion} ✨`\n"
+        f"┣[•🐍 `Python.  : v.{python_version()} ✨`\n"
+        f"┣[•⚙️ `Telethon : v.{version.__version__} ✨`\n"
+        f"┣[•💡 `Base on  : {UPSTREAM_REPO_BRANCH} ✨`\n"
+        f"┣[•🕒 `Uptime.  : {uptime} ✨`\n"
         f"╰━━━━━━━━━━━━━━━━━━━━╯\n"
     )
     await borg.send_file(alive.chat_id, IMG,caption=Alive_caption)
