@@ -316,7 +316,7 @@ async def repo_is_here(wannasee):
 
 @register(outgoing=True, pattern=r"^\.(?:alive|on)\s?(.)?")
 async def _(alive):
-        off_repo = UPSTREAM_REPO_URL
+    off_repo = UPSTREAM_REPO_URL
     force_update = False
     try:
         txt = "`Oops.. Updater tidak bisa berjalan "
