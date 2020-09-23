@@ -113,7 +113,6 @@ if ENV:
         ALIVE_IMG = os.environ.get("ALIVE_IMG", None)
         WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", None)
         LYDIA_API = os.environ.get("LYDIA_API",None)
-        PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
 else:
     class Config(object):
         DB_URI = None
