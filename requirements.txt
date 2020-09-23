@@ -1,2 +1,4 @@
 telethon
+sqlalchemy
+telethon-session-sqlalchemy
 -r requirements-startup.txt
