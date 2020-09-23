@@ -113,6 +113,10 @@
       "description": "Custom your PM permit image ",
       "required": false
     },
+    "WEATHER_DEFCITY": {
+      "description": "City for openweather ",
+      "required": false
+    },
     "TZ": {
       "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
       "value": "Asia/Jakarta",
