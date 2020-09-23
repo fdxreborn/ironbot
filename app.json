@@ -1,7 +1,7 @@
 {
   "name": "Ironbots Userbot",
   "description": "Ironbot created by a @watefuk",
-  "logo": "https://telegra.ph/file/cd379753c20cc2fa81038.jpg",
+  "logo": "https://telegra.ph/file/aece629756cbb1899be93.jpg",
     "keywords": [
     "telegram",
     "userbot",
@@ -132,27 +132,24 @@
   "addons": [{
     "plan": "heroku-postgresql",
     "options": {
-      "version": "10"
+      "version": "12"
     }
   }],
-  "buildpacks": [
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
-      "url": "https://github.com/amivin/aria2-heroku.git"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
-    },
-    {
-      "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
-    },
-    {
-      "url": "heroku/python"
-    }
-  ]
+  "buildpacks": [{
+    "url": "https://github.com/heroku/heroku-buildpack-python.git"
+  }, {
+    "url": "https://github.com/heroku/heroku-buildpack-redis"
+  }, {
+    "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
+  }, {
+    "url": "https://github.com/HasibulKabir/heroku-buildpack-rarlab"
+  },{
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  }, {
+    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
+  }, {
+    "url": "https://github.com/amivin/aria2-heroku"
+  }, {
+    "url": "https://github.com/stevo550/buildpack-slug-cleaner"
+  }]
 }
