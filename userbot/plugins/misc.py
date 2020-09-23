@@ -236,7 +236,7 @@ async def _(event):
 async def install(event):
     if event.fwd_from:
         return
-    chat = Var.PLUGIN_CHANNEL
+    chat = Var.PRIVATE_GROUP_ID
     documentss = await borg.get_messages(chat, None , filter=InputMessagesFilterDocument)
     total = int(documentss.total)
     total_doxx = range(0, total)
