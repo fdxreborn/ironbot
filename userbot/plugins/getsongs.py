@@ -21,7 +21,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import catmusic, catmusicvideo
+from . import catmusic
 
 
 @borg.on(admin_cmd(pattern="song( (.*)|$)"))
