@@ -3,13 +3,13 @@ import json
 import requests
 from datetime import datetime
 from pytz import country_timezones as c_tz, timezone as tz, country_names as c_n
-
+from telethon import events, errors, functions, types, custom
 from userbot import OPEN_WEATHER_MAP_APPID as OWM_API, CMD_HELP
 from userbot.events import register, errors_handler
 
-# ===== CONSTANT =====
-DEFCITY = 'Surabaya'
-
+DEFCITY = Config.WEATHER_DEFCITY
+if DEFCITY is None:
+   DEFCITY = "Surabaya"
 
 # ====================
 async def get_tz(con):
