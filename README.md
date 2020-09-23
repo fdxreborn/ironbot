@@ -15,8 +15,8 @@
 ```python3
 The Easy Way:
 ```
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tesbot07/ironbot/)
-[![Heroku App Status](http://heroku-shields.herokuapp.com/Ironbot)](https://Ironbot.herokuapp.com)
+[![Deploy To Heroku](https://img.shields.io/badge/%E2%86%91_Deploy_to-Heroku-7056bf.svg?style=flat)](https://heroku.com/deploy?template=https://github.com/tesbot07/ironbot/)
+
 ## Generate String Session
 ```python3
 Run on Repl.it:
