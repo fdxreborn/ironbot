@@ -99,7 +99,7 @@ async def _(event):
     await event.edit("Pong!")
     end = datetime.now()
     ms = (end - start).microseconds / 10000
-    await event.edit("Pong!\n{}".format(ms))
+    await event.edit("Pong!\n{}ms".format(ms))
 
 
 @borg.on(admin_cmd(pattern="ls ?(.*)"))
