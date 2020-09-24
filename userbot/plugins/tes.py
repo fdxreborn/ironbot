@@ -34,8 +34,9 @@ async def _(event):
                     "`Can you kindly disable your forward privacy settings for good?`"
                 )
             else:
-                await event.edit(f"{response.message.message}")
-                await bot.send_read_acknowledge(conv.chat_id)
+                await event.delete()
+                await bot.forward_messages(event.chat_id, response.message)
+
     except TimeoutError:
         return await event.edit("`Error: `@SangMataInfo_bot` is not responding!.`")
 
