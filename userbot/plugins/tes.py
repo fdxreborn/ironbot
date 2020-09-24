@@ -1,33 +1,40 @@
+"""QuotLy: Avaible commands: .qbot
+"""
 import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot import bot, CMD_HELP
-from userbot.events import register
+from userbot.utils import admin_cmd
 
-
-@register(outgoing=True, pattern="^.nhentai(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.q(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"hc(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
-        return
-    link = event.pattern_match.group() 
+        return 
+    if not event.reply_to_msg_id:
+       await event.edit("```Reply to any user message.```")
+       return
+    reply_message = await event.get_reply_message() 
+    if not reply_message.media:
+       await event.edit("```Reply to text message```")
+       return
     chat = "@hcdecryptor_bot"
-    await event.edit("```Processing```")
+    sender = reply_message.sender
+    if reply_message.sender.bot:
+       await event.edit("```Reply to actual users message.```")
+       return
+    await event.edit("```Making```")
     async with bot.conversation(chat) as conv:
           try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=424466890))
-              await bot.send_message(chat, link)
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=1031952739))
+              await bot.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
-              await event.reply("```Please unblock @nHentaiBot and try again```")
+              await event.reply("```Please unblock @QuotLyBot and try again```")
               return
-          if response.text.startswith("**Sorry I couldn't get manga from**"):
-             await event.edit("```I think this is not the right link```")
+          if response.text.startswith("Hi!"):
+             await event.edit("```Can you kindly disable your forward privacy settings for good?```")
           else: 
              await event.delete()   
              await bot.forward_messages(event.chat_id, response.message)
-
-CMD_HELP.update({
-"nhentai": 
-".nhentai <link / code> \
-\nUsage: view nhentai in telegra.ph D\n"})
