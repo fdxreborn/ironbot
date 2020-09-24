@@ -40,8 +40,7 @@ async def _(event):
             )
         else:
             await event.edit(f"`{response.message.message}`")
-            await event.edit(animu.chat_id,
-                            reply_to=event.reply_to_msg_id,
+            await event.edit(event.chat_id,
+                            reply_to=reply_to_msg_id,
                             silent=True if event.is_reply else False,
                             hide_via=True)
-    
