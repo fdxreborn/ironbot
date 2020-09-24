@@ -21,11 +21,11 @@ async def _(event):
         return
     await event.edit("`Proses decrypt boss sabar...`")
     await asyncio.sleep(.5)
-    await event.edit("`50,%...`")
+    await event.edit("`50%...`")
     await asyncio.sleep(.5)
-    await event.edit("`70,%...`")
+    await event.edit("`70%...`")
     await asyncio.sleep(.5)
-    await event.edit("`100,%...`")
+    await event.edit("`100%...`")
     await asyncio.sleep(.5)
     async with bot.conversation(chat) as conv:
         try:
@@ -54,9 +54,16 @@ async def _(event):
     chat = "@AsalAja777_bot"
     reply_message.sender
     if reply_message.sender.bot:
-        await event.edit("```Reply to actual users message.```")
+        await event.edit("``````")
         return
-    await event.edit("```Making a Quote```")
+    await event.edit("`Proses decrypt boss sabar...`")
+    await asyncio.sleep(.5)
+    await event.edit("`50%...`")
+    await asyncio.sleep(.5)
+    await event.edit("`70%...`")
+    await asyncio.sleep(.5)
+    await event.edit("`100%...`")
+    await asyncio.sleep(.5)
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -65,7 +72,7 @@ async def _(event):
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock me (@QuotLyBot) u Nigga```")
+            await event.reply("``````")
             return
         await borg.send_read_acknowledge(conv.chat_id)
         if response.text.startswith("Hi!"):
@@ -74,4 +81,4 @@ async def _(event):
             )
         else:
             await event.delete()
-            await event.client.send_message(event.chat_id, response.message)
+            await event.client.send_message(event.chat_id, **response.message**)
