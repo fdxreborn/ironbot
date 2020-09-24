@@ -1,3 +1,10 @@
+# Copyright (C) 2018-2019 Friendly Telegram
+#
+# Licensed under the Raphielscape Public License, Version 1.d (the "License");
+# you may not use this file except in compliance with the License.
+#
+# Port to UserBot by @MoveAngel
+
 from asyncio.exceptions import TimeoutError
 
 from telethon import events
@@ -7,29 +14,31 @@ from userbot import CMD_HELP, bot
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^\.hc(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.hc")
 async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("`Reply to any user message.`")
-        return
+        return await event.edit("`Reply to a text message.`")
     reply_message = await event.get_reply_message()
+    if not reply_message.text:
+        return await event.edit("`Reply to a text message.`")
     chat = "@hcdecryptor_bot"
-    await event.edit("`Processing`")
+    await event.edit("`Processing...`")
     try:
         async with bot.conversation(chat) as conv:
             try:
                 response = conv.wait_event(
-                    events.NewMessage(incoming=True, from_users=461843263)
+                    events.NewMessage(incoming=True, from_users=1031952739)
                 )
                 await bot.forward_messages(chat, reply_message)
                 response = await response
                 await bot.send_read_acknowledge(conv.chat_id)
+
             except YouBlockedUserError:
-                await event.reply("`Please unblock @sangmatainfo_bot and try again`")
-                return
-            if response.text.startswith("Forward"):
+                return await event.reply("`Please unblock @QuotLyBot and try again`")
+
+            if response.text.startswith("Hi!"):
                 await event.edit(
                     "`Can you kindly disable your forward privacy settings for good?`"
                 )
@@ -38,12 +47,9 @@ async def _(event):
                 await bot.forward_messages(event.chat_id, response.message)
 
     except TimeoutError:
-        return await event.edit("`Error: `@SangMataInfo_bot` is not responding!.`")
+        return await event.edit("`Error: `@QuotLyBot` is not responding.`")
 
 
 CMD_HELP.update(
-    {
-        "sangmata": ">`.hc` \
-          \nUsage: View user history.\n"
-    }
+    {"quotly": ">`.q` Reply to chat." "\nUsage: Enhance ur text to sticker.\n"}
 )
