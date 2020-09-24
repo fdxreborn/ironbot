@@ -40,7 +40,8 @@ async def _(event):
              await event.client.delete_messages(conv.chat_id, [msg.id, r.id, respond.id])
              await event.delete()
 
-@register(outgoing=True, pattern="^\.sniff(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.q(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"sniff(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
