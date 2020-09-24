@@ -26,8 +26,8 @@ async def _(event):
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=461843263)
             )
-            await borg.forward_messages(chat, reply_to=msg.id)
-            response = await conv.get_response()
+            await borg.forward_messages(chat, reply_message)
+            response = await response
         except YouBlockedUserError:
             await event.reply("```Please unblock @sangmatainfo_bot and try again```")
             return
