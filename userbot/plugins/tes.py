@@ -14,10 +14,6 @@ async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("`Reply to any user message.`")
         return
-    reply_message = await event.get_reply_message()
-    if not reply_message.text:
-        await event.edit("```reply to text message```")
-        return
     chat = "@hcdecryptor_bot"
     await event.edit("`Processing`")
     try:
