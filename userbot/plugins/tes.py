@@ -2,6 +2,8 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot.events import register
 from userbot import bot, CMD_HELP
+import asyncio
+import sys, time, io
 
 
 @register(outgoing=True, pattern="^.hc(?: |$)(.*)")
@@ -17,7 +19,14 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("`Reply to actual users message.`")
         return
-    await event.edit("`Hmm...`")
+    await event.edit("`Proses decrypt boss sabar...`")
+    await asyncio.sleep(.5)
+    await event.edit("`50,%...`")
+    await asyncio.sleep(.5)
+    await event.edit("`70,%...`")
+    await asyncio.sleep(.5)
+    await event.edit("`100,%...`")
+    await asyncio.sleep(.5)
     async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
