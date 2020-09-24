@@ -20,10 +20,6 @@ async def _(event):
        return
     link = event.pattern_match.group(1)
     chat = "@AsalAja777_bot"
-    sender = reply_message.sender
-    if reply_message.sender.bot:
-       await event.edit("``````")
-       return
     await event.edit("```Making```")
     async with bot.conversation(chat) as conv:
           try:     
