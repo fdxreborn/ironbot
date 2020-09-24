@@ -23,12 +23,12 @@ async def _(event):
     await event.edit("`Hmm...`")
     async with bot.conversation(chat) as conv:
         try:
-            await conv.send_message("/start")
             response = conv.wait_event(
                 events.NewMessage(
                     incoming=True,
                     from_users=1178524273))
             await bot.forward_messages(chat, reply_message)
+            await bot.send_message("/start")
             response = await response
         except YouBlockedUserError:
             await event.reply("`Please unblock   and try again`")
