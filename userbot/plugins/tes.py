@@ -18,7 +18,7 @@ async def _(event):
     if not event.reply_to_msg_id:
        await event.edit("``````")
        return
-    reply_message = await event.get_reply_message() 
+    link = event.pattern_match.group(1)
     chat = "@AsalAja777_bot"
     sender = reply_message.sender
     if reply_message.sender.bot:
@@ -28,7 +28,7 @@ async def _(event):
     async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=1178524273))
-              await bot.forward_messages(chat, reply_message)
+              await bot.forward_messages(chat, link)
               response = await response 
               res = conv.wait_event(
                     events.NewMessage(incoming=True, from_users=1178524273)
@@ -38,10 +38,9 @@ async def _(event):
               await event.reply("``````")
               return
           else: 
-             await event.edit(f"{response.message.message}")
-             await bot.forward_messages(event.chat_id, response.message)
-             await bot.forward_messages(event.chat_id, response.message)
-             await event.client.delete_messages(conv.chat_id, [msg.id, r.id, respond.id])
+             await bot.forward_messages(event.chat_id, respond.message)
+             await event.client.delete_messages(conv.chat_id,
+                                                [msg.id, r.id, respond.id])
              await event.delete()
 
 #@register(outgoing=True, pattern="^.q(?: |$)(.*)")
