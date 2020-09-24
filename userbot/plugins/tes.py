@@ -16,9 +16,6 @@ async def _(event):
        await event.edit("```Reply to any user message.```")
        return
     reply_message = await event.get_reply_message() 
-    if not reply_message.media:
-       await event.edit("```Reply to text message```")
-       return
     chat = "@hcdecryptor_bot"
     sender = reply_message.sender
     if reply_message.sender.bot:
@@ -37,4 +34,4 @@ async def _(event):
              await event.edit("```Can you kindly disable your forward privacy settings for good?```")
           else: 
              await event.delete()   
-             await event.edit(event.chat_id, response.message)
+             await bot.forward_messages(event.chat_id, response.message)
