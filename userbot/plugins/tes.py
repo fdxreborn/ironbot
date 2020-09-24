@@ -23,6 +23,7 @@ async def _(event):
     await event.edit("`Hmm...`")
     async with bot.conversation(chat) as conv:
         try:
+            await conv.send_message("/start")
             response = conv.wait_event(
                 events.NewMessage(
                     incoming=True,
