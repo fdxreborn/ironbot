@@ -37,5 +37,3 @@ async def _(event):
             )
         else:
             await bot.forward_messages(event.chat_id, reply_to=message_id_to_reply)
-            await event.client.delete_messages(conv.chat_id,
-                                       [msg.id, r.id, respond.id])
