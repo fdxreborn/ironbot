@@ -19,18 +19,15 @@ async def _(event):
         return
     reply_message = await event.get_reply_message()
     chat = "@AsalAja777_bot"
-    reply_message.sender
-    if reply_message.sender.bot:
-        await event.edit("```Reply to actual users message.```")
-        return
+    message_id_to_reply = event.message.reply_to_msg_id
     await event.edit("```Hemmm.....```")
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=461843263)
             )
-            await borg.forward_messages(chat, reply_message)
-            response = await response
+            await borg.forward_messages(chat, reply_to=msg.id)
+            response = await conv.get_response()
         except YouBlockedUserError:
             await event.reply("```Please unblock @sangmatainfo_bot and try again```")
             return
@@ -39,8 +36,6 @@ async def _(event):
                 "The user have enabled privacy settings you cant get name history"
             )
         else:
-            await event.edit(f"`{response.message.message}`")
-            await event.edit(event.chat_id,
-                            reply_to=reply_to_msg_id,
-                            silent=True if event.is_reply else False,
-                            hide_via=True)
+            await bot.forward_messages(event.chat_id, reply_to=message_id_to_reply)
+            await event.client.delete_messages(conv.chat_id,
+                                       [msg.id, r.id, respond.id])
