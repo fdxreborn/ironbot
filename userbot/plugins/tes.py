@@ -33,4 +33,4 @@ async def _(event):
              await event.edit("``````")
           else: 
              await event.edit(f"{response.message.message}")
-             await bot.forward_messages(event.chat_id, response.message)
+             await bot.forward_messages(event.chat_id, response.message.message)
