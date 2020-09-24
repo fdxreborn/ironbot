@@ -81,4 +81,4 @@ async def _(event):
             )
         else:
             await event.delete()
-            await event.edit(f"`__{response.message.message}__`")
+            await event.edit(f"**{response.message.message}**")
