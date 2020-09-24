@@ -12,9 +12,6 @@ async def _(event):
         await event.edit("`Reply to any user message.`")
         return
     reply_message = await event.get_reply_message()
-    # if not reply_message.text:
-    # await event.edit("```reply to text message```")
-    # return
     chat = "@AsalAja777_bot"
     reply_message.sender
     if reply_message.sender.bot:
@@ -31,16 +28,10 @@ async def _(event):
             await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("`Please unblock   and try again`")
+            await event.reply("`Please unblock and try again`")
             return
         if response.text.startswith("Forward"):
             await event.edit("`can you kindly disable your forward privacy settings for good?`")
         else:
             await event.edit(f"{response.message.message}")
 
-
-CMD_HELP.update({
-    "snif":
-        ".snif \
-          \nreply to files for view proxy or sni .\n"
-})
