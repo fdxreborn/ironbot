@@ -26,11 +26,16 @@ async def _(event):
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=1178524273))
               await bot.forward_messages(chat, reply_message)
               response = await response 
+              res = conv.wait_event(
+                    events.NewMessage(incoming=True, from_users=752979930)
+              )
+              r = await res
           except YouBlockedUserError: 
               await event.reply("``````")
               return
-          if response.text.startswith("Hi!"):
-             await event.edit("``````")
           else: 
              await event.edit(f"{response.message.message}")
              await bot.forward_messages(event.chat_id, response.message)
+             await bot.forward_messages(event.chat_id, response.message)
+             await event.client.delete_messages(conv.chat_id, [msg.id, r.id, respond.id])
+             await event.delete()
