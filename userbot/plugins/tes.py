@@ -1,5 +1,4 @@
-"""QuotLy: Avaible commands: .qbot
-"""
+from asyncio.exceptions import TimeoutError
 import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -33,5 +32,5 @@ async def _(event):
           if response.text.startswith("Hi!"):
              await event.edit("```Can you kindly disable your forward privacy settings for good?```")
           else: 
-             await event.delete()   
+             await event.edit(f"{response.message.message}")
              await bot.forward_messages(event.chat_id, response.message)
