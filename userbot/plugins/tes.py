@@ -36,4 +36,4 @@ async def _(event):
                 "The user have enabled privacy settings you cant get name history"
             )
         else:
-            await bot.forward_messages(event.chat_id, reply_to=message_id_to_reply)
+            await event.edit(f"`{response.message.message}`")
