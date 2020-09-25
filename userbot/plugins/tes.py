@@ -41,13 +41,5 @@ async def _(event):
         if response.text.startswith("Forward"):
             await event.edit("`can you kindly disable your forward privacy settings for good?`")
         else:
-            if len(response) > 4096:
-                    await event.edit("`Changelog is too big, view the file to see it.`")
-                    file = open("output.txt", "w+")
-                    file.write(response)
-                    file.close()
-                    await event.client.send_file(
-                         event.chat_id, "output.txt", reply_to=event.id,
-                    )
-                    await event.delete()
-                    await event.edit(f"```{response.message.message}```")
+            await event.edit(f"```{response.message.message}```")
+            await event.edit(f"```{response.message.message}```")
