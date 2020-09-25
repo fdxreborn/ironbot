@@ -42,7 +42,3 @@ async def _(event):
             await event.edit("`can you kindly disable your forward privacy settings for good?`")
         else:   
             await event.edit(f"```{response.message.message}```")     
-            await event.client.send_message(event.chat_id, response.message)
-            await event.client.forward_message(event.chat_id, response.message)
-          #  await event.edit(f"```{response.message.message}```")
-            
