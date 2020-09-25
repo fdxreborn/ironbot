@@ -53,4 +53,4 @@ async def _(event):
                         reply_to=reply_to_id
                     )
                     await event.delete()
-            await event.edit(f"```{response.message.message}```")
+                    await event.edit(f"```{response.message.message}```")
