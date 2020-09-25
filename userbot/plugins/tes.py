@@ -6,12 +6,13 @@ import asyncio
 import sys, time, io
 
 
-@register(outgoing=True, pattern="^.hc(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.hc(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.(?:hc|sniff|bongkar)\s?(.)?")
 async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("`Reply to any user message.`")
+        await event.edit("`Reply ke confignya lah.`")
         return
     reply_message = await event.get_reply_message()
     chat = "@AsalAja777_bot"
@@ -20,13 +21,13 @@ async def _(event):
         await event.edit("`Reply to actual users message.`")
         return
     await event.edit("`Proses decrypt boss sabar...`")
-    await asyncio.sleep(.5)
+    await asyncio.sleep(1)
     await event.edit("`50%...`")
-    await asyncio.sleep(.5)
+    await asyncio.sleep(1)
     await event.edit("`70%...`")
-    await asyncio.sleep(.5)
+    await asyncio.sleep(1)
     await event.edit("`100%...`")
-    await asyncio.sleep(.5)
+    await asyncio.sleep(1)
     async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -36,10 +37,10 @@ async def _(event):
             await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("`Please unblock and try again`")
+            await event.reply("`Unblock dulu`")
             return
         if response.text.startswith("Forward"):
-            await event.edit("`can you kindly disable your forward privacy settings for good?`")
+            await event.edit("`?`")
         else:   
             await event.edit(f"```{response.message.message}```")
           #  await event.edit(f"```{response.message.message}```")   
