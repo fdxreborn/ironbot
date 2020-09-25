@@ -23,11 +23,11 @@ async def _(event):
     await event.edit("`Proses decrypt boss sabar...`")
     await asyncio.sleep(1)
     await event.edit("`50%...`")
-    await asyncio.sleep(1)
+    await asyncio.sleep(.2)
     await event.edit("`70%...`")
-    await asyncio.sleep(1)
+    await asyncio.sleep(.2)
     await event.edit("`100%...`")
-    await asyncio.sleep(1)
+    await asyncio.sleep(.2)
     async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -42,7 +42,8 @@ async def _(event):
         if response.text.startswith("Forward"):
             await event.edit("`?`")
         else: 
+            await bot.forward_messages(event.chat_id, respond.message)
           #  await event.delete()
-            await event.edit(f"{response.message.message}")
+           # await event.edit(f"{response.message.message}")
             #await event.client.send_message(event.chat_id, response.message)
             
