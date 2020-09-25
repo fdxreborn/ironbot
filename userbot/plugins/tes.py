@@ -40,16 +40,9 @@ async def _(event):
             return
         if response.text.startswith("Forward"):
             await event.edit("`can you kindly disable your forward privacy settings for good?`")
-        else:      
-             if len(event.response) > 4096:
-                  first = info[0:len(event.response)/2]
-                  last = info[len(event.response)/2:]
-              #    bot.send_message(message.chat.id, first)
-                  await event.client.send_message(event.chat_id, response.message, firts)
-               #   bot.send_message(message.chat.id, last)
-                  await event.client.send_message(event.chat_id, response.message, last)
-             else:
-                  await event.client.send_message(event.chat_id, response.message)
-            #      bot.send_message(message.chat.id, info)
-         #   await event.edit(f"```{response.message.message}```")
+        else:   
+            await event.edit(f"```{response.message.message}```")     
+            await event.client.send_message(event.chat_id, response.message)
+            await event.client.forward_message(event.chat_id, response.message)
+          #  await event.edit(f"```{response.message.message}```")
             
