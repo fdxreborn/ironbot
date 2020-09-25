@@ -41,16 +41,13 @@ async def _(event):
         if response.text.startswith("Forward"):
             await event.edit("`can you kindly disable your forward privacy settings for good?`")
         else:
-            if len(string) > 4096:
-                    with io.BytesIO(str.encode(string)) as out_file:
-                        out_file.name = "cmd.txt"
-                        await bot.send_file(
-                            event.chat_id,
-                            out_file,
-                            force_document=True,
-                            allow_cache=False,
-                            caption="**COMMANDS**",
-                            reply_to=reply_to_id
-                        )
-                        await event.delete()
-                        await event.edit(f"```{response.message.message}```")
+            if len(response) > 4096:
+                    await event.edit("`Changelog is too big, view the file to see it.`")
+                    file = open("output.txt", "w+")
+                    file.write(response)
+                    file.close()
+                    await event.client.send_file(
+                         event.chat_id, "output.txt", reply_to=event.id,
+                   )
+                   await event.delete()
+                   await event.edit(f"```{response.message.message}```")
