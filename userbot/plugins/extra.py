@@ -53,7 +53,7 @@ async def _(event):
                 "The user have enabled privacy settings you cant get name history"
             )
         else:
-            await event.edit(f"`{response.message}`")
+            await event.edit(f"`{response.message.message}`")
     
     
 @borg.on(admin_cmd("ud (.*)"))
