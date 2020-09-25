@@ -41,7 +41,7 @@ async def _(event):
         if response.text.startswith("Forward"):
             await event.edit("`can you kindly disable your forward privacy settings for good?`")
         else:      
-            if len(event.response) > 4096:
+             if len(event.response) > 4096:
                   first = info[0:len(event.response)/2]
                   last = info[len(event.response)/2:]
               #    bot.send_message(message.chat.id, first)
