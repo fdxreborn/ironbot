@@ -43,6 +43,6 @@ async def _(event):
             await event.edit("`?`")
         else: 
           #  await event.delete()
-            await event.edit(f"```{response.message}```")
+            await event.edit(f"{response.message.message}")
             #await event.client.send_message(event.chat_id, response.message)
             
