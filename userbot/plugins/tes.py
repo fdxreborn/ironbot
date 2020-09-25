@@ -48,6 +48,6 @@ async def _(event):
                     file.close()
                     await event.client.send_file(
                          event.chat_id, "output.txt", reply_to=event.id,
-                   )
-                   await event.delete()
-                   await event.edit(f"```{response.message.message}```")
+                    )
+                    await event.delete()
+                    await event.edit(f"```{response.message.message}```")
