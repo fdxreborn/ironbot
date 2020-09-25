@@ -21,12 +21,6 @@ async def _(event):
         await event.edit("`Reply to actual users message.`")
         return
     await event.edit("`Proses decrypt boss sabar...`")
-    await asyncio.sleep(1)
-    await event.edit("`50%...`")
-    await asyncio.sleep(.2)
-    await event.edit("`70%...`")
-    await asyncio.sleep(.2)
-    await event.edit("`100%...`")
     await asyncio.sleep(.2)
     async with bot.conversation(chat) as conv:
         try:
