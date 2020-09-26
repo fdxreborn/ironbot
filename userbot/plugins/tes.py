@@ -35,5 +35,5 @@ async def _(event):
         if response.text.startswith("Forward"):
             await event.edit("`?`")
         else: 
-            await event.client.send_message(event.chat_id, response.message, reply_to=reply_to_id)
+            await event.client.send_message(event.chat_id, response.message, reply_to=reply_message)
             await event.delete()
